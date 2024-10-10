@@ -1,3 +1,5 @@
+import 'package:catering_mobile/app/components/drawer.dart';
+import 'package:catering_mobile/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
@@ -48,7 +50,7 @@ class HomeView extends GetView<HomeController> {
             GestureDetector(
               onTap: () {
                 // Menavigasi ke halaman profil
-                Get.toNamed('/profile');
+                Get.toNamed(Routes.PROFILE);
               },
               child: CircleAvatar(
                 backgroundImage: AssetImage('assets/images/1.png'),
@@ -210,7 +212,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
         ),
-        drawer: _drawer(),
+        drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -410,78 +412,4 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
-
-  final List<String> _menuItems = <String>[
-    'Home',
-    'Menu Makanan',
-    'Paket Makanan',
-    'Favorit',
-  ];
-
-  final List<String> _menuRoutes = <String>[
-    '/home',          // Route untuk halaman Home
-    '/menu-makanan',  // Route untuk halaman Menu Makanan
-    '/paket-makanan', // Route untuk halaman Paket Makanan
-    '/favorit',       // Route untuk halaman Favorit
-  ];
-
-// Menambahkan daftar ikon untuk setiap item menu
-  final List<IconData> _menuIcons = <IconData>[
-    Icons.home,            // Ikon untuk Home
-    Icons.restaurant_menu,  // Ikon untuk Menu Makanan
-    Icons.card_giftcard,     // Ikon untuk Paket Makanan
-    Icons.favorite,         // Ikon untuk Favorit
-  ];
-
-  Widget _drawer() => Drawer(
-    backgroundColor: Color(0xFFECD7D7), // Mengubah warna background Drawer
-    child: Column(
-      children: [
-        // Menambahkan gambar logo di atas ListTile
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0), // Mengurangi jarak logo dengan menu
-          child: Image.asset(
-            'assets/images/logo.png', // Path gambar logo
-            height: 100, // Memperbesar tinggi logo
-            width: 120, // Memperbesar lebar logo
-          ),
-        ),
-        Divider(),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _menuItems.length,
-            itemBuilder: (context, index) {
-              // Cek apakah rute saat ini sama dengan rute item yang ditekan
-              bool isActive = Get.currentRoute == _menuRoutes[index];
-
-              return ListTile(
-                leading: Icon(
-                  _menuIcons[index], // Menambahkan ikon untuk setiap item
-                  color: isActive ? Color(0xFFECD7D7) : Colors.black, // Ubah warna ikon sesuai status aktif
-                ),
-                onTap: () {
-                  if (!isActive) {
-                    _scaffoldKey.currentState?.openEndDrawer();
-                    Get.toNamed(_menuRoutes[index]); // Navigasi ke halaman sesuai item
-                  } else {
-                    _scaffoldKey.currentState?.openEndDrawer();
-                    Navigator.of(context).pop(); // Menutup Drawer jika sudah di halaman yang sama
-                  }
-                },
-                title: Text(
-                  _menuItems[index],
-                  style: TextStyle(
-                    color: isActive ? Color(0xFFECD7D7) : Colors.black, // Warna teks berbeda saat aktif
-                    fontWeight: isActive ? FontWeight.w900 : FontWeight.bold, // Tebal font lebih besar saat aktif
-                    fontSize: 16, // Ukuran font tetap
-                  ),
-                ),
-                tileColor: isActive ? Color(0xFFFF3131) : null, // Latar belakang berbeda saat aktif
-              );
-            },
-          ),
-        ),
-      ],
-    ),
-  );
 }

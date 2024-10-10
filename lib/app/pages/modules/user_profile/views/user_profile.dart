@@ -7,13 +7,15 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
+        backgroundColor: Color(0xFFECD7D7),
         title: Text('Profile'),
         actions: [
           IconButton(
             icon: Icon(Icons.logout), // Icon untuk tombol logout
             onPressed: () {
-              Get.offNamed(Routes.KURIRLOGIN);
+              Get.offAllNamed(Routes.MAINLOGIN);
             },
           ),
         ],
@@ -28,7 +30,7 @@ class UserProfile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/Container.png'),
+                  backgroundImage: AssetImage('assets/images/1.png'),
                   minRadius: 30,
                   maxRadius: 50,
                 ),
@@ -38,7 +40,7 @@ class UserProfile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Kurir',
+                      'User',
                       style:
                       TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                       textAlign: TextAlign.start,
@@ -66,8 +68,8 @@ class UserProfile extends StatelessWidget {
             ),
             SizedBox(height: 30),
             ListTile(
-              leading: Icon(Icons.receipt_long, color: Colors.black, size: 30),
-              title: Text('Riwayat Pengiriman'),
+              leading: Icon(Icons.password, color: Colors.black, size: 30),
+              title: Text('Update Password'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
                 // Tambahkan navigasi ke halaman Riwayat Transaksi
@@ -75,10 +77,47 @@ class UserProfile extends StatelessWidget {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.local_shipping, color: Colors.black, size: 30),
-              title: Text('Status Pesanan'),
+              leading: Icon(Icons.receipt_long, color: Colors.black, size: 30),
+              title: Text('Riwayat Transaksi'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
+                // Tambahkan navigasi ke halaman Riwayat Transaksi
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.payment, color: Colors.black, size: 30),
+              title: Text('Metode Pembayaran'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                // Tambahkan navigasi ke halaman Riwayat Transaksi
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.settings, color: Colors.black, size: 30),
+              title: Text('Pengaturan'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                // Tambahkan navigasi ke halaman Riwayat Transaksi
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.report_problem, color: Colors.black, size: 30),
+              title: Text('Keluhan'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                // Tambahkan navigasi ke halaman Riwayat Transaksi
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.bug_report, color: Colors.black, size: 30),
+              title: Text('Lapor Bug'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                // Tambahkan navigasi ke halaman Riwayat Transaksi
               },
             ),
             Divider(),
@@ -88,6 +127,19 @@ class UserProfile extends StatelessWidget {
               },
               child: const Text(
                 'Home Admin!',
+                style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.offNamed(Routes.HOMEKURIR);
+              },
+              child: const Text(
+                'Home Kurir!',
                 style: TextStyle(
                   color: Colors.blueAccent,
                   fontSize: 14,
