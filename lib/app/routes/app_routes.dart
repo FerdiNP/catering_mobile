@@ -4,6 +4,10 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
+  static const PROFILE = _Paths.PROFILE;
+  static const FAVORITE = _Paths.FAVORITE;
+  static const PAKET = _Paths.PAKET;
+  static const MENU = _Paths.MENU;
   static const HOMEADMIN = _Paths.HOMEADMIN;
   static const HOMEKURIR = _Paths.HOMEKURIR;
   static const MAINLOGIN = _Paths.MAINLOGIN;
@@ -15,6 +19,10 @@ abstract class Routes {
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
+  static const PROFILE = '/profile';
+  static const FAVORITE = '/favorite';
+  static const MENU = '/menu-makanan';
+  static const PAKET = '/paket-makanan';
   static const MAINLOGIN = '/main-login';
   static const KURIRLOGIN = '/kurir-login';
   static const HOMEADMIN = '/home-admin';
