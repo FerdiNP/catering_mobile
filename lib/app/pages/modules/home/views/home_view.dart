@@ -10,6 +10,20 @@ class HomeView extends GetView<HomeController> {
   HomeView({super.key});
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // Data makanan untuk setiap kategori
+  final List<Map<String, String>> foodItems = [
+    {'title': 'Salad Omlat', 'description': 'Pagi, Sehat', 'discount': '30%', 'code': 'Kode PAGI 123', 'time': '20 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Ayam Ceos', 'description': 'Pagi, Enak', 'discount': '20%', 'code': 'Kode PAGI 342', 'time': '15 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Soto', 'description': 'Pagi, Enak', 'discount': '35%', 'code': 'Kode PAGI 6969', 'time': '10 min', 'price': '20.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Roti', 'description': 'Pagi, Enak, Murah', 'discount': '10%', 'code': 'Kode PAGI 389', 'time': '5 min', 'price': '10.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Nasi Goreng', 'description': 'Siang, Pedas', 'discount': '15%', 'code': 'Kode SIANG 456', 'time': '25 min', 'price': '30.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Mie Ayam', 'description': 'Siang, Lezat', 'discount': '5%', 'code': 'Kode SIANG 678', 'time': '12 min', 'price': '25.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Kwetiau', 'description': 'Siang, Gurih', 'discount': '20%', 'code': 'Kode SIANG 789', 'time': '10 min', 'price': '35.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Tahu Tempe', 'description': 'Malam, Sehat', 'discount': '25%', 'code': 'Kode MALAM 321', 'time': '15 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Sushi', 'description': 'Malam, Unik', 'discount': '10%', 'code': 'Kode MALAM 654', 'time': '30 min', 'price': '45.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Pasta', 'description': 'Malam, Kenyang', 'discount': '5%', 'code': 'Kode MALAM 987', 'time': '20 min', 'price': '40.000', 'imagePath': 'assets/images/Container1.png'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     final _selectedColor = Color(0xFFECD7D7);
@@ -19,9 +33,9 @@ class HomeView extends GetView<HomeController> {
     final _borderColor = Color(0xFFCDE7BE);
 
     return DefaultTabController(
-      length: 3, // Number of Tabs
+      length: 3,
       child: Scaffold(
-        backgroundColor: Color(0xFFECD7D7),
+          backgroundColor: Color(0xFFECD7D7),
         appBar: AppBar(
           scrolledUnderElevation: 0,
           elevation: 0,
@@ -40,7 +54,6 @@ class HomeView extends GetView<HomeController> {
               return IconButton(
                 icon: Icon(Icons.menu, color: Colors.black),
                 onPressed: () {
-                  // Menampilkan drawer
                   Scaffold.of(context).openDrawer();
                 },
               );
@@ -170,8 +183,7 @@ class HomeView extends GetView<HomeController> {
                       IconButton(
                         icon: Icon(Icons.search, color: Colors.black),
                         onPressed: () {
-                          // Fungsi untuk tombol search
-                          Get.toNamed('/search');
+                          Get.toNamed(Routes.SEARCH);
                         },
                       ),
                     ],
@@ -208,122 +220,26 @@ class HomeView extends GetView<HomeController> {
                     },
                   ),
                 ),
+                SizedBox(height: 4,),
+                Divider(),
+                SizedBox(height: 4,),
               ],
             ),
           ),
         ),
         drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Divider(),
-                SizedBox(height: 20),
-                Text(
-                  "⭐ Populer",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Expanded(
-                  child: Padding(
-                    // Tambahkan padding di sini
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    // Padding horizontal
-                    child: ListView(
-                      children: [
-                        foodItem(
-                            'Salad Omlat',
-                            'Pagi, Sehat',
-                            '30%',
-                            'Kode PAGI 123',
-                            '20 min',
-                            '50.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Ayam Ceos',
-                            'Pagi, Enak',
-                            '20%',
-                            'Kode PAGI 342',
-                            '15 min',
-                            '50.000',
-                            'assets/images/Container1.png'),
-                        foodItem('Soto', 'Pagi, Enak', '35%', 'Kode PAGI 6969',
-                            '10 min', '20.000', 'assets/images/Container1.png'),
-                        foodItem(
-                            'Roti',
-                            'Pagi, Enak, Murah',
-                            '10%',
-                            'Kode PAGI 389',
-                            '5 min',
-                            '10.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Nasi Goreng',
-                            'Siang, Pedas',
-                            '15%',
-                            'Kode SIANG 456',
-                            '25 min',
-                            '30.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Mie Ayam',
-                            'Siang, Lezat',
-                            '5%',
-                            'Kode SIANG 678',
-                            '12 min',
-                            '25.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Kwetiau',
-                            'Siang, Gurih',
-                            '20%',
-                            'Kode SIANG 789',
-                            '10 min',
-                            '35.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Tahu Tempe',
-                            'Malam, Sehat',
-                            '25%',
-                            'Kode MALAM 321',
-                            '15 min',
-                            '15.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Sushi',
-                            'Malam, Unik',
-                            '10%',
-                            'Kode MALAM 654',
-                            '30 min',
-                            '45.000',
-                            'assets/images/Container1.png'),
-                        foodItem(
-                            'Pasta',
-                            'Malam, Kenyang',
-                            '5%',
-                            'Kode MALAM 987',
-                            '20 min',
-                            '40.000',
-                            'assets/images/Container1.png'),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+        body: TabBarView(
+          children: [
+            buildList(),
+            buildList(),
+            buildList(),
+          ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             // Arahkan ke halaman keranjang
-            Get.toNamed('/cart');
+            Get.toNamed(Routes.CART);
           },
           backgroundColor: Colors.red, // Ubah warna background tombol
           child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
@@ -332,9 +248,27 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-// Food Item Widget
-  Widget foodItem(String title, String description, String discount,
-      String code, String time, String price, String imagePath) {
+  Widget buildList() {
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      children: [
+        SizedBox(height: 20),
+        Text(
+          "⭐ Populer",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.black,
+          ),
+        ),
+        SizedBox(height: 20),
+        ...foodItems.map((item) => foodItem(item)).toList(),
+      ],
+    );
+  }
+
+  // Food Item Widget
+  Widget foodItem(Map<String, String> item) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -342,7 +276,7 @@ class HomeView extends GetView<HomeController> {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.asset(
-              imagePath,
+              item['imagePath']!,
               width: 100,
               height: 100,
               fit: BoxFit.cover,
@@ -354,54 +288,39 @@ class HomeView extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  item['title']!,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                Text(description,
+                Text(item['description']!,
                     style: TextStyle(color: Colors.grey[600], fontSize: 14)),
                 SizedBox(height: 5),
                 Row(
                   children: [
                     Icon(Icons.discount, size: 16, color: Colors.orange),
                     SizedBox(width: 5),
-                    Text("$discount | $code", style: TextStyle(fontSize: 12)),
+                    Text("${item['discount']} | ${item['code']}", style: TextStyle(fontSize: 12)),
                   ],
                 ),
                 SizedBox(height: 5),
                 Row(
                   children: [
-                    Icon(Icons.star, size: 16, color: Colors.amber),
-                    // Star icon
-                    SizedBox(width: 5),
-                    Text(
-                      '4.5', // You can replace this with a dynamic rating value
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight:
-                              FontWeight.bold), // Change font style here
-                    ),
-                    SizedBox(width: 10),
                     Icon(Icons.access_time, size: 16, color: Colors.grey),
                     SizedBox(width: 5),
                     Text(
-                      time,
+                      item['time']!,
                       style: TextStyle(
-                          fontSize: 12,
-                          fontWeight:
-                              FontWeight.bold), // Change font style here
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 10),
                     Icon(Icons.attach_money, size: 16, color: Colors.green),
                     SizedBox(width: 5),
                     Text(
-                      price,
+                      item['price']!,
                       style: TextStyle(
-                          fontSize: 12,
-                          fontWeight:
-                              FontWeight.bold), // Change font style here
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -411,5 +330,5 @@ class HomeView extends GetView<HomeController> {
         ],
       ),
     );
-  }
-}
+  }}
+

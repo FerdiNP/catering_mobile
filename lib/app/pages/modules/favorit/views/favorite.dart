@@ -67,6 +67,15 @@ class Favorite extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Arahkan ke halaman keranjang
+          Get.toNamed(Routes.CART);
+        },
+        backgroundColor: Colors.red, // Ubah warna background tombol
+        child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+      ),
     );
   }
 }

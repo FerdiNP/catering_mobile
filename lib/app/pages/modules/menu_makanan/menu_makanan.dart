@@ -5,17 +5,48 @@ import 'package:get/get.dart';
 
 class MenuMakanan extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final List<Map<String, String>> foodItems = [
+    {'title': 'Salad Omlat', 'description': 'Pagi, Sehat', 'discount': '30%', 'code': 'Kode PAGI 123', 'time': '20 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Ayam Ceos', 'description': 'Pagi, Enak', 'discount': '20%', 'code': 'Kode PAGI 342', 'time': '15 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Soto', 'description': 'Pagi, Enak', 'discount': '35%', 'code': 'Kode PAGI 6969', 'time': '10 min', 'price': '20.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Roti', 'description': 'Pagi, Enak, Murah', 'discount': '10%', 'code': 'Kode PAGI 389', 'time': '5 min', 'price': '10.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Nasi Goreng', 'description': 'Siang, Pedas', 'discount': '15%', 'code': 'Kode SIANG 456', 'time': '25 min', 'price': '30.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Mie Ayam', 'description': 'Siang, Lezat', 'discount': '5%', 'code': 'Kode SIANG 678', 'time': '12 min', 'price': '25.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Kwetiau', 'description': 'Siang, Gurih', 'discount': '20%', 'code': 'Kode SIANG 789', 'time': '10 min', 'price': '35.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Tahu Tempe', 'description': 'Malam, Sehat', 'discount': '25%', 'code': 'Kode MALAM 321', 'time': '15 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Sushi', 'description': 'Malam, Unik', 'discount': '10%', 'code': 'Kode MALAM 654', 'time': '30 min', 'price': '45.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Pasta', 'description': 'Malam, Kenyang', 'discount': '5%', 'code': 'Kode MALAM 987', 'time': '20 min', 'price': '40.000', 'imagePath': 'assets/images/Container1.png'},
+  ];
+
+  // Daftar minuman menggunakan List<Map<String, String>>
+  final List<Map<String, String>> drinkItems = [
+    {'title': 'Jus Mangga', 'description': 'Segar dan Manis', 'discount': '10%', 'code': 'Kode JUS123', 'time': '5 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Es Teh Manis', 'description': 'Dingin dan Segar', 'discount': '5%', 'code': 'Kode TEH456', 'time': '3 min', 'price': '5.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Kopi Latte', 'description': 'Hangat dan Kental', 'discount': '20%', 'code': 'Kode LATTE789', 'time': '7 min', 'price': '25.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Soda Gembira', 'description': 'Menyegarkan', 'discount': '15%', 'code': 'Kode SODA321', 'time': '5 min', 'price': '10.000', 'imagePath': 'assets/images/Container1.png'},
+  ];
+
+  // Daftar lainnya menggunakan List<Map<String, String>>
+  final List<Map<String, String>> otherItems = [
+    {'title': 'Cemilan Kentang', 'description': 'Renyah dan Gurih', 'discount': '10%', 'code': 'Kode CEMIL123', 'time': '10 min', 'price': '20.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Roti Bakar', 'description': 'Hangat dan Manis', 'discount': '15%', 'code': 'Kode ROTI456', 'time': '7 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
+    {'title': 'Martabak Manis', 'description': 'Lezat dan Mengenyangkan', 'discount': '20%', 'code': 'Kode MART789', 'time': '10 min', 'price': '25.000', 'imagePath': 'assets/images/Container1.png'},
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final _selectedColor = Color(0xFFECD7D7);
+    final _unselectedColor = Colors.white;
+    final _selectedBackgroundColor = Color(0xFFFF3131);
+    final _unselectedBackgroundColor = Color(0xFFECD7D7);
     return DefaultTabController(
       length: 3, // Jumlah kategori (Makanan, Minuman, Lainnya)
       child: Scaffold(
         backgroundColor: Color(0xFFECD7D7),
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          backgroundColor: Color(0xFFECD7D7), // Tetap statis, tidak berubah
-          elevation: 0, // Elevasi tetap 0 untuk membuatnya flat
+          backgroundColor: Color(0xFFECD7D7),
+          elevation: 0,
           title: const Text(
             'Menu Makanan',
             style: TextStyle(
@@ -48,34 +79,113 @@ class MenuMakanan extends StatelessWidget {
             ),
             SizedBox(width: 16),
           ],
-          bottom: TabBar(
-            indicatorColor: Colors.black, // Warna indikator tab
-            labelColor: Colors.black, // Warna teks aktif
-            unselectedLabelColor: Colors.grey, // Warna teks tidak aktif
-            tabs: [
-              Tab(text: 'Makanan'),
-              Tab(text: 'Minuman'),
-              Tab(text: 'Lainnya'),
-            ],
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(60),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: TabBar(
+                        isScrollable: false,
+                        dividerColor: Colors.transparent,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: _selectedBackgroundColor,
+                        ),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        labelColor: _selectedColor,
+                        unselectedLabelColor: Colors.black,
+                        unselectedLabelStyle: TextStyle(
+                          fontWeight: FontWeight.normal,
+                        ),
+                        labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        tabs: [
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.food_bank, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Makanan"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.local_drink, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Minuman"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.more, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Lainnya"),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.search, color: Colors.black),
+                      onPressed: () {
+                        // Menavigasi ke halaman pencarian
+                        Get.toNamed(Routes.SEARCH); // Ganti dengan rute pencarian yang sesuai
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8),
+                Divider(),              ],
+            ),
           ),
         ),
         drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
         body: TabBarView(
           children: [
             // Konten untuk tab "Makanan"
-            buildFoodList(),
+            buildList(),
             // Konten untuk tab "Minuman"
             buildDrinkList(),
             // Konten untuk tab "Lainnya"
             buildOtherList(),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Arahkan ke halaman keranjang
+            Get.toNamed(Routes.CART);
+          },
+          backgroundColor: Colors.red, // Ubah warna background tombol
+          child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+        ),
       ),
+
     );
   }
 
-  // Widget untuk list Makanan
-  Widget buildFoodList() {
+  Widget buildList() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       children: [
@@ -89,83 +199,12 @@ class MenuMakanan extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        foodItem(
-            'Salad Omlat',
-            'Pagi, Sehat',
-            '30%',
-            'Kode PAGI 123',
-            '20 min',
-            '50.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Ayam Ceos',
-            'Pagi, Enak',
-            '20%',
-            'Kode PAGI 342',
-            '15 min',
-            '50.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Soto', 'Pagi, Enak', '35%', 'Kode PAGI 6969', '10 min', '20.000', 'assets/images/Container1.png'),
-        foodItem(
-            'Roti',
-            'Pagi, Enak, Murah',
-            '10%',
-            'Kode PAGI 389',
-            '5 min',
-            '10.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Nasi Goreng',
-            'Siang, Pedas',
-            '15%',
-            'Kode SIANG 456',
-            '25 min',
-            '30.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Mie Ayam',
-            'Siang, Lezat',
-            '5%',
-            'Kode SIANG 678',
-            '12 min',
-            '25.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Kwetiau',
-            'Siang, Gurih',
-            '20%',
-            'Kode SIANG 789',
-            '10 min',
-            '35.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Tahu Tempe',
-            'Malam, Sehat',
-            '25%',
-            'Kode MALAM 321',
-            '15 min',
-            '15.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Sushi',
-            'Malam, Unik',
-            '10%',
-            'Kode MALAM 654',
-            '30 min',
-            '45.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Pasta',
-            'Malam, Kenyang',
-            '5%',
-            'Kode MALAM 987',
-            '20 min',
-            '40.000',
-            'assets/images/Container1.png'),
+        ...foodItems.map((item) => foodItem(item)).toList(),
       ],
     );
   }
+
+
 
   // Widget untuk list Minuman
   Widget buildDrinkList() {
@@ -182,38 +221,7 @@ class MenuMakanan extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        foodItem(
-            'Jus Mangga',
-            'Segar dan Manis',
-            '10%',
-            'Kode JUS123',
-            '5 min',
-            '15.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Es Teh Manis',
-            'Dingin dan Segar',
-            '5%',
-            'Kode TEH456',
-            '3 min',
-            '5.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Kopi Latte',
-            'Hangat dan Kental',
-            '20%',
-            'Kode LATTE789',
-            '7 min',
-            '25.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Soda Gembira',
-            'Menyegarkan',
-            '15%',
-            'Kode SODA321',
-            '5 min',
-            '10.000',
-            'assets/images/Container1.png'),
+        ...drinkItems.map((item) => foodItem(item)).toList(),
       ],
     );
   }
@@ -233,37 +241,13 @@ class MenuMakanan extends StatelessWidget {
           ),
         ),
         SizedBox(height: 20),
-        foodItem(
-            'Cemilan Kentang',
-            'Renyah dan Gurih',
-            '10%',
-            'Kode CEMIL123',
-            '10 min',
-            '20.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Roti Bakar',
-            'Hangat dan Manis',
-            '15%',
-            'Kode ROTI456',
-            '7 min',
-            '15.000',
-            'assets/images/Container1.png'),
-        foodItem(
-            'Martabak Manis',
-            'Lezat dan Mengenyangkan',
-            '20%',
-            'Kode MART789',
-            '10 min',
-            '25.000',
-            'assets/images/Container1.png'),
+        ...otherItems.map((item) => foodItem(item)).toList(),
       ],
     );
   }
 
   // Food Item Widget
-  Widget foodItem(String title, String description, String discount,
-      String code, String time, String price, String imagePath) {
+  Widget foodItem(Map<String, String> item) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -271,7 +255,7 @@ class MenuMakanan extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.asset(
-              imagePath,
+              item['imagePath']!,
               width: 100,
               height: 100,
               fit: BoxFit.cover,
@@ -283,20 +267,20 @@ class MenuMakanan extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  item['title']!,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 SizedBox(
                   height: 5,
                 ),
-                Text(description,
+                Text(item['description']!,
                     style: TextStyle(color: Colors.grey[600], fontSize: 14)),
                 SizedBox(height: 5),
                 Row(
                   children: [
                     Icon(Icons.discount, size: 16, color: Colors.orange),
                     SizedBox(width: 5),
-                    Text("$discount | $code", style: TextStyle(fontSize: 12)),
+                    Text("${item['discount']} | ${item['code']}", style: TextStyle(fontSize: 12)),
                   ],
                 ),
                 SizedBox(height: 5),
@@ -305,7 +289,7 @@ class MenuMakanan extends StatelessWidget {
                     Icon(Icons.access_time, size: 16, color: Colors.grey),
                     SizedBox(width: 5),
                     Text(
-                      time,
+                      item['time']!,
                       style: TextStyle(
                           fontSize: 12, fontWeight: FontWeight.bold),
                     ),
@@ -313,7 +297,7 @@ class MenuMakanan extends StatelessWidget {
                     Icon(Icons.attach_money, size: 16, color: Colors.green),
                     SizedBox(width: 5),
                     Text(
-                      price,
+                      item['price']!,
                       style: TextStyle(
                           fontSize: 12, fontWeight: FontWeight.bold),
                     ),
