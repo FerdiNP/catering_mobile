@@ -7,39 +7,47 @@ import 'package:get/get.dart';
 class PaketMakanan extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // Contoh data paket makanan
   final List<Map<String, dynamic>> paketMakananList = [
     {
       'image': 'assets/images/Container1.png',
-      'name': 'Paket Sarapan',
+      'name': 'Paket Sarapan (2-3 Orang)',
       'description': 'Nasi uduk, ayam goreng, dan sambal',
-      'price': 'Rp 25.000',
+      'price': 'Rp 100.000',
       'rating': 4.5,
       'discount': 'Diskon 10%',
     },
     {
       'image': 'assets/images/Container1.png',
-      'name': 'Paket Makan Siang',
+      'name': 'Paket Makan Siang (4-5 Orang)',
       'description': 'Nasi putih, rendang, dan lalapan',
-      'price': 'Rp 35.000',
+      'price': 'Rp 250.000',
       'rating': 4.8,
       'discount': 'Diskon 15%',
     },
     {
       'image': 'assets/images/Container1.png',
-      'name': 'Paket Makan Malam',
+      'name': 'Paket Makan Malam (6-8 Orang)',
       'description': 'Nasi goreng, telur, dan kerupuk',
-      'price': 'Rp 20.000',
+      'price': 'Rp 360.000',  // Harga diperbarui
       'rating': 4.2,
       'discount': 'Diskon 5%',
     },
     {
       'image': 'assets/images/Container1.png',
-      'name': 'Paket Spesial',
+      'name': 'Paket Spesial (9-10 Orang)',
       'description': 'Nasi kuning, ayam bakar, dan sambal',
-      'price': 'Rp 50.000',
+      'price': 'Rp 500.000',  // Harga diperbarui
       'rating': 5.0,
       'discount': 'Diskon 20%',
+    },
+    // Tambahan paket minuman
+    {
+      'image': 'assets/images/Container1.png',
+      'name': 'Paket Minuman (2-10 Orang)',
+      'description': 'Teh, kopi, dan air mineral',
+      'price': 'Rp 70.000',  // Harga diperbarui
+      'rating': 4.7,
+      'discount': 'Diskon 5%',
     },
   ];
 
@@ -53,9 +61,9 @@ class PaketMakanan extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Color(0xFFECD7D7),
+        backgroundColor: _unselectedBackgroundColor,
         appBar: AppBar(
-          backgroundColor: Color(0xFFECD7D7),
+          backgroundColor: _unselectedBackgroundColor,
           elevation: 0,
           title: const Text(
             'Paket Makanan',
@@ -90,346 +98,201 @@ class PaketMakanan extends StatelessWidget {
             SizedBox(width: 16),
           ],
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 12),
-              child: TabBar(
-                isScrollable: false,
-                dividerColor: Colors.transparent,
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: _selectedBackgroundColor,
-                ),
-                indicatorSize: TabBarIndicatorSize.label,
-                labelColor: _selectedColor,
-                unselectedLabelColor: Colors.black,
-                unselectedLabelStyle: TextStyle(
-                  fontWeight: FontWeight.normal,
-                ),
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                tabs: [
-                  Tab(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.wb_twilight, size: 18),
-                          SizedBox(width: 8),
-                          Text("Pagi"),
+            preferredSize: Size.fromHeight(60),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: TabBar(
+                        isScrollable: false,
+                        dividerColor: Colors.transparent,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: _selectedBackgroundColor,
+                        ),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        labelColor: _selectedColor,
+                        unselectedLabelColor: Colors.black,
+                        unselectedLabelStyle: TextStyle(
+                          fontWeight: FontWeight.normal,
+                        ),
+                        labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        tabs: [
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.wb_twilight, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Pagi"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.wb_sunny, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Siang"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Tab(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.nights_stay, size: 18),
+                                  SizedBox(width: 8),
+                                  Text("Malam"),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.wb_sunny, size: 18),
-                          SizedBox(width: 8),
-                          Text("Siang"),
-                        ],
-                      ),
+                    IconButton(
+                      icon: Icon(Icons.search, color: Colors.black),
+                      onPressed: () {
+                        // Menavigasi ke halaman pencarian
+                        Get.toNamed(Routes.SEARCH); // Ganti dengan rute pencarian yang sesuai
+                      },
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.nights_stay, size: 18),
-                          SizedBox(width: 8),
-                          Text("Malam"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+                SizedBox(height: 8),
+                Divider(),
+              ],
             ),
           ),
         ),
         drawer: DrawerComponent(scaffoldKey: _scaffoldKey),
         body: TabBarView(
           children: [
-            // ListView untuk tab Pagi
-            ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: paketMakananList.length,
-              itemBuilder: (context, index) {
-                final paket = paketMakananList[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Gambar lebih besar
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            image: DecorationImage(
-                              image: AssetImage(paket['image']),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        // Informasi paket
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Nama paket
-                              Text(
-                                paket['name'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Deskripsi paket
-                              Text(paket['description']),
-                              SizedBox(height: 8),
-                              // Harga paket
-                              Text(
-                                paket['price'],
-                                style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Rating dan Diskon
-                              Row(
-                                children: [
-                                  Icon(Icons.star, color: Colors.orange, size: 20),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    paket['rating'].toString(),
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(width: 20),
-                                  // Kupon diskon
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Text(
-                                      paket['discount'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-            // ListView untuk tab Siang
-            ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: paketMakananList.length,
-              itemBuilder: (context, index) {
-                final paket = paketMakananList[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Gambar lebih besar
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            image: DecorationImage(
-                              image: AssetImage(paket['image']),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        // Informasi paket
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Nama paket
-                              Text(
-                                paket['name'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Deskripsi paket
-                              Text(paket['description']),
-                              SizedBox(height: 8),
-                              // Harga paket
-                              Text(
-                                paket['price'],
-                                style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Rating dan Diskon
-                              Row(
-                                children: [
-                                  Icon(Icons.star, color: Colors.orange, size: 20),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    paket['rating'].toString(),
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(width: 20),
-                                  // Kupon diskon
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Text(
-                                      paket['discount'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-            // ListView untuk tab Malam
-            ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: paketMakananList.length,
-              itemBuilder: (context, index) {
-                final paket = paketMakananList[index];
-                return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Gambar lebih besar
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            image: DecorationImage(
-                              image: AssetImage(paket['image']),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        // Informasi paket
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Nama paket
-                              Text(
-                                paket['name'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Deskripsi paket
-                              Text(paket['description']),
-                              SizedBox(height: 8),
-                              // Harga paket
-                              Text(
-                                paket['price'],
-                                style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              // Rating dan Diskon
-                              Row(
-                                children: [
-                                  Icon(Icons.star, color: Colors.orange, size: 20),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    paket['rating'].toString(),
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(width: 20),
-                                  // Kupon diskon
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    child: Text(
-                                      paket['discount'],
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+            // Memanggil fungsi untuk menampilkan ListView
+            buildListView(),
+            buildListView(),
+            buildListView(),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Arahkan ke halaman keranjang
+            Get.toNamed(Routes.CART);
+          },
+          backgroundColor: Colors.red, // Ubah warna background tombol
+          child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+        ),
       ),
+    );
+  }
+
+  // Fungsi untuk membangun ListView
+  Widget buildListView() {
+    final _unselectedBackgroundColor = Color(0xFFECD7D7);
+    return ListView.builder(
+      padding: const EdgeInsets.all(8),
+      itemCount: paketMakananList.length,
+      itemBuilder: (context, index) {
+        final paket = paketMakananList[index];
+        return Card(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          color: _unselectedBackgroundColor, // Set color to match background
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Gambar lebih besar
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                      image: AssetImage(paket['image']),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16),
+                // Informasi paket
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Nama paket
+                      Text(
+                        paket['name'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      // Deskripsi paket
+                      Text(paket['description']),
+                      SizedBox(height: 8),
+                      // Harga paket
+                      Text(
+                        paket['price'],
+                        style: TextStyle(
+                          color: Colors.redAccent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      // Rating dan Diskon
+                      Row(
+                        children: [
+                          Icon(Icons.star, color: Colors.orange, size: 20),
+                          SizedBox(width: 5),
+                          Text(
+                            paket['rating'].toString(),
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          SizedBox(width: 20),
+                          // Kupon diskon
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              paket['discount'],
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

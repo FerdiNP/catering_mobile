@@ -9,6 +9,7 @@ class UserProfile extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: Color(0xFFECD7D7),
         title: Text('Profile'),
         actions: [
@@ -72,7 +73,7 @@ class UserProfile extends StatelessWidget {
               title: Text('Update Password'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.UPDATEPASSWORD);
               },
             ),
             Divider(),
@@ -81,7 +82,7 @@ class UserProfile extends StatelessWidget {
               title: Text('Riwayat Transaksi'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.RIWAYATUSER);
               },
             ),
             Divider(),
@@ -90,7 +91,16 @@ class UserProfile extends StatelessWidget {
               title: Text('Metode Pembayaran'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.METODEPEMBAYARAN);
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.location_on, color: Colors.black, size: 30),
+              title: Text('Alamat Pengiriman'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                Get.toNamed(Routes.MANAGEALAMAT);
               },
             ),
             Divider(),
@@ -99,7 +109,7 @@ class UserProfile extends StatelessWidget {
               title: Text('Pengaturan'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                // Get.toNamed(Routes.PENGATURANUSER);
               },
             ),
             Divider(),
@@ -108,7 +118,7 @@ class UserProfile extends StatelessWidget {
               title: Text('Keluhan'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.KELUHAN);
               },
             ),
             Divider(),
@@ -117,7 +127,7 @@ class UserProfile extends StatelessWidget {
               title: Text('Lapor Bug'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.LAPORBUG);
               },
             ),
             Divider(),

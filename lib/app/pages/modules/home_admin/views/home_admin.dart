@@ -7,7 +7,9 @@ class HomeAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
+        backgroundColor: Color(0xFFECD7D7),
         title: Text('Home Admin'),
         actions: [
           IconButton(
@@ -28,7 +30,7 @@ class HomeAdmin extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/Container.png'),
+                  backgroundImage: AssetImage('assets/images/1.png'),
                   minRadius: 30,
                   maxRadius: 50,
                 ),
@@ -70,7 +72,7 @@ class HomeAdmin extends StatelessWidget {
               title: Text('Manage User'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Manage User
+                Get.toNamed(Routes.MANAGEUSER);
               },
             ),
             Divider(),
@@ -79,7 +81,7 @@ class HomeAdmin extends StatelessWidget {
               title: Text('Manage Menu'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Manage Menu
+                Get.toNamed(Routes.MANAGEMENU);
               },
             ),
             Divider(),
@@ -88,7 +90,7 @@ class HomeAdmin extends StatelessWidget {
               title: Text('Manage Paket'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Manage Paket
+                Get.toNamed(Routes.MANAGEPAKET);
               },
             ),
             Divider(),
@@ -97,7 +99,7 @@ class HomeAdmin extends StatelessWidget {
               title: Text('Manage Voucher'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Manage Paket
+                Get.toNamed(Routes.MANAGEVOUCHER);
               },
             ),
             Divider(),
@@ -106,7 +108,7 @@ class HomeAdmin extends StatelessWidget {
               title: Text('Riwayat Transaksi'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.RIWAYATADMIN);
               },
             ),
             Divider(),

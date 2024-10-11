@@ -4,10 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeKurir extends StatelessWidget {
+  final _selectedColor = Color(0xFFECD7D7);
+  final _unselectedColor = Colors.white;
+  final _selectedBackgroundColor = Color(0xFFFF3131);
+  final _unselectedBackgroundColor = Color(0xFFECD7D7);
+  final _borderColor = Color(0xFFCDE7BE);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
+        backgroundColor: Color(0xFFECD7D7),
         title: Text('Home Kurir'),
         actions: [
           IconButton(
@@ -28,7 +35,7 @@ class HomeKurir extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/Container.png'),
+                  backgroundImage: AssetImage('assets/images/1.png'),
                   minRadius: 30,
                   maxRadius: 50,
                 ),
@@ -70,7 +77,7 @@ class HomeKurir extends StatelessWidget {
               title: Text('Riwayat Pengiriman'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Tambahkan navigasi ke halaman Riwayat Transaksi
+                Get.toNamed(Routes.RIWAYATKURIR);
               },
             ),
             Divider(),

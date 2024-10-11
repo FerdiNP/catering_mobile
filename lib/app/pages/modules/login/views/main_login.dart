@@ -9,6 +9,7 @@ class MainLogin extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Center(
           child: Image.asset(
             'assets/images/logo.png',
