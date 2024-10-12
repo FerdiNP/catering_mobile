@@ -34,7 +34,6 @@ class Register extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            // Judul
             Center(
               child: Text(
                 'Selamat Datang',

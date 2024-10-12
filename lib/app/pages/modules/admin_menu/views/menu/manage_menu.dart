@@ -8,17 +8,17 @@ class ManageMenu extends StatelessWidget {
     {
       'name': 'Nasi Goreng',
       'price': 'Rp 20.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
     {
       'name': 'Sate Ayam',
       'price': 'Rp 25.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
     {
       'name': 'Mie Goreng',
       'price': 'Rp 18.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
   ];
 
@@ -33,7 +33,7 @@ class ManageMenu extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Get.toNamed(Routes.FORMMENU); // Arahkan ke halaman tambah menu
+              Get.toNamed(Routes.FORMMENU);
             },
           ),
         ],
@@ -47,7 +47,7 @@ class ManageMenu extends StatelessWidget {
             child: ListTile(
               contentPadding: EdgeInsets.all(8),
               leading: Image.asset(
-                menuItem['image']!, // Mengambil gambar dari URL
+                menuItem['image']!,
                 width: 50,
                 height: 50,
                 fit: BoxFit.cover,
@@ -60,13 +60,12 @@ class ManageMenu extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () {
-                      Get.toNamed(Routes.FORMMENU); // Arahkan ke halaman edit menu
+                      Get.toNamed(Routes.FORMMENU);
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      // Tampilkan dialog konfirmasi untuk penghapusan
                       _showDeleteConfirmationDialog(context, index);
                     },
                   ),
@@ -79,7 +78,6 @@ class ManageMenu extends StatelessWidget {
     );
   }
 
-  // Metode untuk menampilkan dialog konfirmasi
   void _showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -91,13 +89,13 @@ class ManageMenu extends StatelessWidget {
             TextButton(
               child: Text('Batal'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: Text('Hapus'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Menu telah dihapus')),
                 );

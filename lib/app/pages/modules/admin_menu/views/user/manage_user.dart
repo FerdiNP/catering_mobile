@@ -9,7 +9,6 @@ class ManageUser extends StatelessWidget {
   final _unselectedBackgroundColor = Color(0xFFECD7D7);
   final _borderColor = Color(0xFFCDE7BE);
 
-  // Dummy data pengguna
   final List<Map<String, String>> users = [
     {'name': 'User 1', 'email': 'user1@example.com'},
     {'name': 'User 2', 'email': 'user2@example.com'},
@@ -53,7 +52,6 @@ class ManageUser extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      // Tampilkan dialog konfirmasi untuk penghapusan
                       _showDeleteConfirmationDialog(context, index);
                     },
                   ),
@@ -66,7 +64,6 @@ class ManageUser extends StatelessWidget {
     );
   }
 
-  // Metode untuk menampilkan dialog konfirmasi
   void _showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -78,13 +75,13 @@ class ManageUser extends StatelessWidget {
             TextButton(
               child: Text('Batal'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: Text('Hapus'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Pengguna telah dihapus')),
                 );

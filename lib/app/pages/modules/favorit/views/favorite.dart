@@ -26,7 +26,6 @@ class Favorite extends StatelessWidget {
             return IconButton(
               icon: Icon(Icons.menu, color: Colors.black),
               onPressed: () {
-                // Menampilkan drawer
                 Scaffold.of(context).openDrawer();
               },
             );
@@ -35,7 +34,6 @@ class Favorite extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              // Menavigasi ke halaman profil
               Get.toNamed(Routes.PROFILE);
             },
             child: CircleAvatar(
@@ -45,21 +43,21 @@ class Favorite extends StatelessWidget {
           SizedBox(width: 16),
         ],
       ),
-      drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
+      drawer: DrawerComponent(scaffoldKey: _scaffoldKey),
       body: Container(
         color: Colors.pink[50],
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
             MenuItem(
-              image: 'assets/images/Container1.png', // Local asset image
+              image: 'assets/images/Container1.png',
               title: 'Nasi Goreng Seafood',
               description:
               'Merupakan olahan nasi goreng dan ada campuran seafood seperti udang yang menciptakan rasa mewah di dalamnya.',
             ),
             const SizedBox(height: 16),
             MenuItem(
-              image: 'assets/images/Container1.png', // Local asset image
+              image: 'assets/images/Container1.png',
               title: 'Soto Ayam',
               description:
               'Merupakan olahan campuran bihun, ayam, telur, toge, yang disajikan dengan kuah kaldu yang lezat, dapat ditambah dengan telur dan perasan jeruk nipis.',
@@ -70,11 +68,10 @@ class Favorite extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Arahkan ke halaman keranjang
           Get.toNamed(Routes.CART);
         },
-        backgroundColor: Colors.red, // Ubah warna background tombol
-        child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+        backgroundColor: Colors.red,
+        child: Icon(Icons.shopping_cart, color: Colors.white),
       ),
     );
   }

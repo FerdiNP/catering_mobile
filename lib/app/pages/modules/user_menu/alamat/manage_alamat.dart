@@ -9,7 +9,6 @@ class ManageAlamat extends StatelessWidget {
   final _unselectedBackgroundColor = Color(0xFFECD7D7);
   final _borderColor = Color(0xFFCDE7BE);
 
-  // Dummy data alamat dengan tipe dan nama penerima
   final List<Map<String, String>> addresses = [
     {
       'type': 'Rumah',
@@ -56,10 +55,10 @@ class ManageAlamat extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Nama Penerima: ${address['recipient']!}'),
-                  SizedBox(height: 4), // Space between recipient and address
+                  SizedBox(height: 4),
                   Text(
                     address['address']!,
-                    style: TextStyle(color: Colors.grey[600]), // Optional styling
+                    style: TextStyle(color: Colors.grey[600]),
                   ),
                 ],
               ),
@@ -75,7 +74,6 @@ class ManageAlamat extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      // Tampilkan dialog konfirmasi untuk penghapusan
                       _showDeleteConfirmationDialog(context, index);
                     },
                   ),
@@ -88,7 +86,6 @@ class ManageAlamat extends StatelessWidget {
     );
   }
 
-  // Metode untuk menampilkan dialog konfirmasi
   void _showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -100,13 +97,13 @@ class ManageAlamat extends StatelessWidget {
             TextButton(
               child: Text('Batal'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: Text('Hapus'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Alamat telah dihapus')),
                 );

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _selectedBackgroundColor = Color(0xFFFF3131);
+      final _selectedBackgroundColor = Color(0xFFFF3131);
     final _unselectedBackgroundColor = Color(0xFFECD7D7);
     final _borderColor = Color(0xFFCDE7BE);
 
@@ -29,10 +29,9 @@ class CartView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Location Selection Button
             ElevatedButton(
               onPressed: () {
-                // Handle location selection
+                Get.toNamed(Routes.ALAMATPENGIRIMAN);
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(16.0),
@@ -47,7 +46,7 @@ class CartView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Pilih Lokasi',
+                    'Pilih Alamat',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -63,7 +62,6 @@ class CartView extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // List of cart items
             _buildCartItem(
               imageUrl: 'assets/images/Container1.png',
               title: 'Salad Omilet',
@@ -79,10 +77,9 @@ class CartView extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Promo Code Button
             ElevatedButton(
               onPressed: () {
-                // Handle promo code input
+                Get.toNamed(Routes.VOUCHER);
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(16.0),
@@ -114,7 +111,6 @@ class CartView extends StatelessWidget {
               ),
             ),
 
-            // Pricing Summary Container
             SizedBox(height: 20),
             Container(
               padding: EdgeInsets.all(16.0),
@@ -238,11 +234,10 @@ class CartView extends StatelessWidget {
           ),
         ),
       ),
-      resizeToAvoidBottomInset: false, // Prevent bottom sheet from moving up
+      resizeToAvoidBottomInset: false,
     );
   }
 
-  // Widget to build each cart item
   Widget _buildCartItem({
     required String imageUrl,
     required String title,

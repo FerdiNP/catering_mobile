@@ -7,7 +7,6 @@ class RiwayatKurir extends StatefulWidget {
 }
 
 class _RiwayatKurirState extends State<RiwayatKurir> {
-  // Dummy data pengiriman
   final List<Map<String, String>> deliveries = [
     {
       'deliveryNo': '001',
@@ -40,7 +39,7 @@ class _RiwayatKurirState extends State<RiwayatKurir> {
   @override
   void initState() {
     super.initState();
-    filteredDeliveries = deliveries; // Awalnya, tampilkan semua pengiriman
+    filteredDeliveries = deliveries;
   }
 
   void filterDeliveries(String query) {
@@ -64,7 +63,6 @@ class _RiwayatKurirState extends State<RiwayatKurir> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search bar untuk mencari nomor pengiriman
             TextField(
               decoration: InputDecoration(
                 labelText: 'Cari Nomor Pengiriman',
@@ -112,7 +110,6 @@ class _RiwayatKurirState extends State<RiwayatKurir> {
                       ),
                       trailing: Icon(Icons.arrow_forward_ios, size: 16),
                       onTap: () {
-                        // Logika untuk melihat detail pengiriman
                         print('Lihat detail pengiriman');
                       },
                     ),

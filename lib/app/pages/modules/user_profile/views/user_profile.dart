@@ -14,7 +14,7 @@ class UserProfile extends StatelessWidget {
         title: Text('Profile'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout), // Icon untuk tombol logout
+            icon: Icon(Icons.logout),
             onPressed: () {
               Get.offAllNamed(Routes.MAINLOGIN);
             },

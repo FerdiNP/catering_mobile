@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../routes/app_pages.dart'; // Pastikan jalur import ini sesuai
+import '../routes/app_pages.dart';
 
 class DrawerComponent extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -19,30 +19,29 @@ class DrawerComponent extends StatelessWidget {
     ];
 
     final List<String> menuRoutes = <String>[
-      Routes.HOME,          // Route untuk halaman Home
-      Routes.MENU,      // Route untuk halaman Menu Makanan
-      Routes.PAKET,      // Route untuk halaman Paket Makanan
-      Routes.FAVORITE,      // Route untuk halaman Favorit
+      Routes.HOME,
+      Routes.MENU,
+      Routes.PAKET,
+      Routes.FAVORITE
     ];
 
     final List<IconData> menuIcons = <IconData>[
-      Icons.home,            // Ikon untuk Home
-      Icons.restaurant_menu,  // Ikon untuk Menu Makanan
-      Icons.card_giftcard,     // Ikon untuk Paket Makanan
-      Icons.favorite,         // Ikon untuk Favorit
+      Icons.home,
+      Icons.restaurant_menu,
+      Icons.card_giftcard,
+      Icons.favorite,
     ];
 
     return Drawer(
-      backgroundColor: const Color(0xFFECD7D7), // Mengubah warna background Drawer
+      backgroundColor: const Color(0xFFECD7D7),
       child: Column(
         children: [
-          // Menambahkan gambar logo di atas ListTile
           Padding(
-            padding: const EdgeInsets.only(top: 20.0), // Mengurangi jarak logo dengan menu
+            padding: const EdgeInsets.only(top: 20.0),
             child: Image.asset(
-              'assets/images/logo.png', // Path gambar logo
-              height: 100, // Memperbesar tinggi logo
-              width: 120, // Memperbesar lebar logo
+              'assets/images/logo.png',
+              height: 100,
+              width: 120,
             ),
           ),
           const Divider(),
@@ -50,33 +49,32 @@ class DrawerComponent extends StatelessWidget {
             child: ListView.builder(
               itemCount: menuItems.length,
               itemBuilder: (context, index) {
-                // Cek apakah rute saat ini sama dengan rute item yang ditekan
                 bool isActive = Get.currentRoute == menuRoutes[index];
 
                 return ListTile(
                   leading: Icon(
-                    menuIcons[index], // Menambahkan ikon untuk setiap item
-                    color: isActive ? const Color(0xFFECD7D7) : Colors.black, // Ubah warna ikon sesuai status aktif
+                    menuIcons[index],
+                    color: isActive ? const Color(0xFFECD7D7) : Colors.black,
                   ),
                   onTap: () {
                     if (!isActive) {
                       scaffoldKey.currentState?.openEndDrawer();
-                      Navigator.of(context).pop(); // Menutup Drawer
-                      Get.offNamed(menuRoutes[index]); // Navigasi ke halaman sesuai item
+                      Navigator.of(context).pop();
+                      Get.offNamed(menuRoutes[index]);
                     } else {
                       scaffoldKey.currentState?.openEndDrawer();
-                      Navigator.of(context).pop(); // Menutup Drawer jika sudah di halaman yang sama
+                      Navigator.of(context).pop();
                     }
                   },
                   title: Text(
                     menuItems[index],
                     style: TextStyle(
-                      color: isActive ? const Color(0xFFECD7D7) : Colors.black, // Warna teks berbeda saat aktif
-                      fontWeight: isActive ? FontWeight.w900 : FontWeight.bold, // Tebal font lebih besar saat aktif
-                      fontSize: 16, // Ukuran font tetap
+                      color: isActive ? const Color(0xFFECD7D7) : Colors.black,
+                      fontWeight: isActive ? FontWeight.w900 : FontWeight.bold,
+                      fontSize: 16,
                     ),
                   ),
-                  tileColor: isActive ? const Color(0xFFFF3131) : null, // Latar belakang berbeda saat aktif
+                  tileColor: isActive ? const Color(0xFFFF3131) : null,
                 );
               },
             ),

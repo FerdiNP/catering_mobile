@@ -21,7 +21,6 @@ class FormVoucher extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Kode Voucher
             Text(
               'Kode Voucher',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -46,7 +45,6 @@ class FormVoucher extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Diskon Voucher
             Text(
               'Diskon Voucher',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -71,7 +69,6 @@ class FormVoucher extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Deskripsi Voucher
             Text(
               'Deskripsi Voucher',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -95,7 +92,6 @@ class FormVoucher extends StatelessWidget {
             ),
             SizedBox(height: 32),
 
-            // Tombol Tambah dan Update
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

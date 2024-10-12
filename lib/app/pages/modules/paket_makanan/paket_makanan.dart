@@ -28,7 +28,7 @@ class PaketMakanan extends StatelessWidget {
       'image': 'assets/images/Container1.png',
       'name': 'Paket Makan Malam (6-8 Orang)',
       'description': 'Nasi goreng, telur, dan kerupuk',
-      'price': 'Rp 360.000',  // Harga diperbarui
+      'price': 'Rp 360.000',
       'rating': 4.2,
       'discount': 'Diskon 5%',
     },
@@ -36,16 +36,15 @@ class PaketMakanan extends StatelessWidget {
       'image': 'assets/images/Container1.png',
       'name': 'Paket Spesial (9-10 Orang)',
       'description': 'Nasi kuning, ayam bakar, dan sambal',
-      'price': 'Rp 500.000',  // Harga diperbarui
+      'price': 'Rp 500.000',
       'rating': 5.0,
       'discount': 'Diskon 20%',
     },
-    // Tambahan paket minuman
     {
       'image': 'assets/images/Container1.png',
       'name': 'Paket Minuman (2-10 Orang)',
       'description': 'Teh, kopi, dan air mineral',
-      'price': 'Rp 70.000',  // Harga diperbarui
+      'price': 'Rp 70.000',
       'rating': 4.7,
       'discount': 'Diskon 5%',
     },
@@ -79,7 +78,6 @@ class PaketMakanan extends StatelessWidget {
               return IconButton(
                 icon: Icon(Icons.menu, color: Colors.black),
                 onPressed: () {
-                  // Menampilkan drawer
                   Scaffold.of(context).openDrawer();
                 },
               );
@@ -88,7 +86,6 @@ class PaketMakanan extends StatelessWidget {
           actions: [
             GestureDetector(
               onTap: () {
-                // Menavigasi ke halaman profil
                 Get.toNamed(Routes.PROFILE);
               },
               child: CircleAvatar(
@@ -167,8 +164,7 @@ class PaketMakanan extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.search, color: Colors.black),
                       onPressed: () {
-                        // Menavigasi ke halaman pencarian
-                        Get.toNamed(Routes.SEARCH); // Ganti dengan rute pencarian yang sesuai
+                        Get.toNamed(Routes.SEARCH);
                       },
                     ),
                   ],
@@ -182,7 +178,6 @@ class PaketMakanan extends StatelessWidget {
         drawer: DrawerComponent(scaffoldKey: _scaffoldKey),
         body: TabBarView(
           children: [
-            // Memanggil fungsi untuk menampilkan ListView
             buildListView(),
             buildListView(),
             buildListView(),
@@ -191,17 +186,15 @@ class PaketMakanan extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Arahkan ke halaman keranjang
             Get.toNamed(Routes.CART);
           },
-          backgroundColor: Colors.red, // Ubah warna background tombol
-          child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+          backgroundColor: Colors.red,
+          child: Icon(Icons.shopping_cart, color: Colors.white),
         ),
       ),
     );
   }
 
-  // Fungsi untuk membangun ListView
   Widget buildListView() {
     final _unselectedBackgroundColor = Color(0xFFECD7D7);
     return ListView.builder(
@@ -211,13 +204,12 @@ class PaketMakanan extends StatelessWidget {
         final paket = paketMakananList[index];
         return Card(
           margin: EdgeInsets.symmetric(vertical: 10),
-          color: _unselectedBackgroundColor, // Set color to match background
+          color: _unselectedBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Gambar lebih besar
                 Container(
                   width: 100,
                   height: 100,
@@ -230,12 +222,10 @@ class PaketMakanan extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 16),
-                // Informasi paket
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Nama paket
                       Text(
                         paket['name'],
                         style: TextStyle(
@@ -244,10 +234,8 @@ class PaketMakanan extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 8),
-                      // Deskripsi paket
                       Text(paket['description']),
                       SizedBox(height: 8),
-                      // Harga paket
                       Text(
                         paket['price'],
                         style: TextStyle(
@@ -257,7 +245,6 @@ class PaketMakanan extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 8),
-                      // Rating dan Diskon
                       Row(
                         children: [
                           Icon(Icons.star, color: Colors.orange, size: 20),
@@ -267,7 +254,6 @@ class PaketMakanan extends StatelessWidget {
                             style: TextStyle(fontSize: 16),
                           ),
                           SizedBox(width: 20),
-                          // Kupon diskon
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(

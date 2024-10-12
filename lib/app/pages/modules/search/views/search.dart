@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';  // Pastikan Anda sudah menambahkan get di pubspec.yaml
+import 'package:get/get.dart';
 
 class SearchViews extends StatelessWidget {
   @override
@@ -9,8 +9,8 @@ class SearchViews extends StatelessWidget {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: Colors.transparent,
-        elevation: 0, // Menghilangkan shadow
-        automaticallyImplyLeading: false, // Disable default leading back button
+        elevation: 0,
+        automaticallyImplyLeading: false,
         title: Row(
           children: [
             IconButton(
@@ -20,21 +20,20 @@ class SearchViews extends StatelessWidget {
               },
             ),
             Expanded(
-              // Search Bar Container
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(30), // Rounded edges
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.search, color: Colors.grey), // Search Icon
-                    SizedBox(width: 8), // Spacing between icon and text
+                    Icon(Icons.search, color: Colors.grey),
+                    SizedBox(width: 8),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Mau makan apa hari ini?', // Updated text
+                          hintText: 'Mau makan apa hari ini?',
                           border: InputBorder.none,
                         ),
                       ),
@@ -46,15 +45,14 @@ class SearchViews extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView( // Bungkus body dengan SingleChildScrollView agar bisa di-scroll
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16), // Padding after AppBar
+              SizedBox(height: 16),
 
-              // Keyword tags
               Text(
                 'Kata kunci',
                 style: TextStyle(
@@ -77,7 +75,6 @@ class SearchViews extends StatelessWidget {
               Divider(),
               SizedBox(height: 16),
 
-              // Category section
               Text(
                 'Kategori',
                 style: TextStyle(
@@ -87,13 +84,12 @@ class SearchViews extends StatelessWidget {
               ),
               SizedBox(height: 8),
 
-              // Gunakan GridView untuk menampilkan kategori
               GridView.count(
-                crossAxisCount: 3, // Ubah menjadi 3 kolom
+                crossAxisCount: 3,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                shrinkWrap: true, // Allow GridView to be wrapped in SingleChildScrollView
-                physics: NeverScrollableScrollPhysics(), // Disable internal GridView scroll
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   _buildFoodCard('Roti', 'assets/images/Container1.png'),
                   _buildFoodCard('Kopi', 'assets/images/Container1.png'),
@@ -122,7 +118,6 @@ class SearchViews extends StatelessWidget {
     );
   }
 
-  // Helper function to build a tag
   Widget _buildTag(String text) {
     return Chip(
       label: Text(text),
@@ -133,7 +128,6 @@ class SearchViews extends StatelessWidget {
     );
   }
 
-  // Helper function to build a food card
   Widget _buildFoodCard(String title, String imageUrl) {
     return Column(
       children: [

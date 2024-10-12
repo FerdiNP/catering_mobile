@@ -10,7 +10,6 @@ class HomeView extends GetView<HomeController> {
   HomeView({super.key});
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // Data makanan untuk setiap kategori
   final List<Map<String, String>> foodItems = [
     {'title': 'Salad Omlat', 'description': 'Pagi, Sehat', 'discount': '30%', 'code': 'Kode PAGI 123', 'time': '20 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
     {'title': 'Ayam Ceos', 'description': 'Pagi, Enak', 'discount': '20%', 'code': 'Kode PAGI 342', 'time': '15 min', 'price': '50.000', 'imagePath': 'assets/images/Container1.png'},
@@ -62,7 +61,6 @@ class HomeView extends GetView<HomeController> {
           actions: [
             GestureDetector(
               onTap: () {
-                // Menavigasi ke halaman profil
                 Get.toNamed(Routes.PROFILE);
               },
               child: CircleAvatar(
@@ -189,13 +187,12 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ),
-                // ListView horizontal dengan gambar
                 Container(
-                  height: 100, // Tentukan tinggi
-                  margin: EdgeInsets.only(top: 12), // Margin top untuk spasi
+                  height: 100,
+                  margin: EdgeInsets.only(top: 12),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 3, // Jumlah item
+                    itemCount: 3,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -227,7 +224,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
         ),
-        drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
+        drawer: DrawerComponent(scaffoldKey: _scaffoldKey),
         body: TabBarView(
           children: [
             buildList(),
@@ -238,11 +235,10 @@ class HomeView extends GetView<HomeController> {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Arahkan ke halaman keranjang
             Get.toNamed(Routes.CART);
           },
-          backgroundColor: Colors.red, // Ubah warna background tombol
-          child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+          backgroundColor: Colors.red,
+          child: Icon(Icons.shopping_cart, color: Colors.white),
         ),
       ),
     );
@@ -267,7 +263,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  // Food Item Widget
   Widget foodItem(Map<String, String> item) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
