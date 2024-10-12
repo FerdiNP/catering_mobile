@@ -9,17 +9,17 @@ class ManagePaket extends StatelessWidget {
     {
       'name': 'Paket Hemat 1',
       'price': 'Rp 50.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
     {
       'name': 'Paket Kombo 2',
       'price': 'Rp 75.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
     {
       'name': 'Paket Keluarga 3',
       'price': 'Rp 100.000',
-      'image': 'assets/images/Container1.png', // Ganti dengan URL gambar yang valid
+      'image': 'assets/images/Container1.png',
     },
   ];
 
@@ -34,7 +34,7 @@ class ManagePaket extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Get.toNamed(Routes.FORMMENU); // Arahkan ke halaman tambah paket
+              Get.toNamed(Routes.FORMMENU);
             },
           ),
         ],
@@ -75,7 +75,7 @@ class ManagePaket extends StatelessWidget {
                         IconButton(
                           icon: Icon(Icons.edit),
                           onPressed: () {
-                            Get.toNamed(Routes.FORMMENU); // Arahkan ke halaman edit paket
+                            Get.toNamed(Routes.FORMMENU);
                           },
                         ),
                         IconButton(
@@ -96,7 +96,6 @@ class ManagePaket extends StatelessWidget {
     );
   }
 
-  // Metode untuk menampilkan dialog konfirmasi
   void _showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -108,13 +107,13 @@ class ManagePaket extends StatelessWidget {
             TextButton(
               child: Text('Batal'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: Text('Hapus'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Paket telah dihapus')),
                 );

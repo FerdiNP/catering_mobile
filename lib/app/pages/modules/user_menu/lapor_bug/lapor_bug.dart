@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class LaporBug extends StatelessWidget {
   final _unselectedBackgroundColor = Color(0xFFECD7D7);
-  final List<String> _bugTypes = ['Crash', 'UI Issue', 'Performance', 'Other']; // Options for bug type
-  String? _selectedBugType; // Variable to hold the selected bug type
+  final List<String> _bugTypes = ['Crash', 'UI Issue', 'Performance', 'Other'];
+  String? _selectedBugType;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class LaporBug extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Get.back(); // Navigasi kembali
+            Get.back();
           },
         ),
       ),
@@ -26,7 +26,6 @@ class LaporBug extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Nama Lengkap
             Text(
               'Nama Lengkap',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -50,7 +49,6 @@ class LaporBug extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Tipe Bug - Dropdown
             Text(
               'Tipe Bug',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -79,13 +77,12 @@ class LaporBug extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (String? newValue) {
-                  _selectedBugType = newValue; // Update the selected value
+                  _selectedBugType = newValue;
                 },
               ),
             ),
             SizedBox(height: 16),
 
-            // Masalah Aplikasi
             Text(
               'Masalah Aplikasi',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -110,7 +107,6 @@ class LaporBug extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Kirim Button
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -118,7 +114,7 @@ class LaporBug extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  backgroundColor: Color(0xFFFF3131), // Warna tombol
+                  backgroundColor: Color(0xFFFF3131),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

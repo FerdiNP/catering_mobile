@@ -11,7 +11,6 @@ class _PembayaranState extends State<Pembayaran> {
   final _selectedBackgroundColor = Color(0xFFFF3131);
   final _unselectedBackgroundColor = Color(0xFFECD7D7);
 
-  // Inisialisasi metode pembayaran dengan 'Cash' sebagai default
   String? _selectedPaymentMethod = 'Cash';
 
   @override
@@ -36,14 +35,12 @@ class _PembayaranState extends State<Pembayaran> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Payment Details Header
             const Text(
               'Rincian Pembayaran',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             const SizedBox(height: 16),
 
-            // Payment Amount Details
             Container(
               padding: EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -76,12 +73,10 @@ class _PembayaranState extends State<Pembayaran> {
 
             const SizedBox(height: 20),
 
-            // Payment Method Selection
             const Text('Metode Pembayaran',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
 
-            // Payment Method Options using custom layout
             _buildPaymentMethod(icon: Icons.money, title: 'Cash', value: 'Cash'),
             _buildPaymentMethod(icon: Icons.qr_code, title: 'QR', value: 'QR'),
             _buildPaymentMethod(icon: Icons.account_balance, title: 'Bank', value: 'Bank'),
@@ -114,11 +109,10 @@ class _PembayaranState extends State<Pembayaran> {
           ),
         ),
       ),
-      resizeToAvoidBottomInset: false, // Prevent bottom sheet from moving up
+      resizeToAvoidBottomInset: false,
     );
   }
 
-  // Widget to build each payment method option with icon and radio button
   Widget _buildPaymentMethod({required IconData icon, required String title, required String value}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,7 +143,7 @@ class PembayaranSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFECD7D7), // Match the background color
+      backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
@@ -162,7 +156,7 @@ class PembayaranSuccess extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFFECD7D7), // Same theme color as Pembayaran
+        backgroundColor: Color(0xFFECD7D7),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -188,15 +182,15 @@ class PembayaranSuccess extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.HOME);
+                    Get.toNamed(Routes.LACAKPESANAN);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFFF3131), // Theme color
+                    backgroundColor: Color(0xFFFF3131),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
                   ),
-                  child: const Text('Cek Status',
-                    style: TextStyle(color: Colors.white), // Change text color to white
+                  child: const Text('Lacak Pesanan',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 ElevatedButton(
@@ -204,12 +198,12 @@ class PembayaranSuccess extends StatelessWidget {
                     Get.toNamed(Routes.HOME);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFFF3131), // Theme color
+                    backgroundColor: Color(0xFFFF3131),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
                   ),
                   child: const Text('Kembali',
-                    style: TextStyle(color: Colors.white), // Change text color to white
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],

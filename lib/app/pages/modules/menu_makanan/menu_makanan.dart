@@ -18,7 +18,6 @@ class MenuMakanan extends StatelessWidget {
     {'title': 'Pasta', 'description': 'Malam, Kenyang', 'discount': '5%', 'code': 'Kode MALAM 987', 'time': '20 min', 'price': '40.000', 'imagePath': 'assets/images/Container1.png'},
   ];
 
-  // Daftar minuman menggunakan List<Map<String, String>>
   final List<Map<String, String>> drinkItems = [
     {'title': 'Jus Mangga', 'description': 'Segar dan Manis', 'discount': '10%', 'code': 'Kode JUS123', 'time': '5 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
     {'title': 'Es Teh Manis', 'description': 'Dingin dan Segar', 'discount': '5%', 'code': 'Kode TEH456', 'time': '3 min', 'price': '5.000', 'imagePath': 'assets/images/Container1.png'},
@@ -26,7 +25,6 @@ class MenuMakanan extends StatelessWidget {
     {'title': 'Soda Gembira', 'description': 'Menyegarkan', 'discount': '15%', 'code': 'Kode SODA321', 'time': '5 min', 'price': '10.000', 'imagePath': 'assets/images/Container1.png'},
   ];
 
-  // Daftar lainnya menggunakan List<Map<String, String>>
   final List<Map<String, String>> otherItems = [
     {'title': 'Cemilan Kentang', 'description': 'Renyah dan Gurih', 'discount': '10%', 'code': 'Kode CEMIL123', 'time': '10 min', 'price': '20.000', 'imagePath': 'assets/images/Container1.png'},
     {'title': 'Roti Bakar', 'description': 'Hangat dan Manis', 'discount': '15%', 'code': 'Kode ROTI456', 'time': '7 min', 'price': '15.000', 'imagePath': 'assets/images/Container1.png'},
@@ -40,7 +38,7 @@ class MenuMakanan extends StatelessWidget {
     final _selectedBackgroundColor = Color(0xFFFF3131);
     final _unselectedBackgroundColor = Color(0xFFECD7D7);
     return DefaultTabController(
-      length: 3, // Jumlah kategori (Makanan, Minuman, Lainnya)
+      length: 3,
       child: Scaffold(
         backgroundColor: Color(0xFFECD7D7),
         appBar: AppBar(
@@ -61,7 +59,6 @@ class MenuMakanan extends StatelessWidget {
               return IconButton(
                 icon: Icon(Icons.menu, color: Colors.black),
                 onPressed: () {
-                  // Menampilkan drawer
                   Scaffold.of(context).openDrawer();
                 },
               );
@@ -70,7 +67,6 @@ class MenuMakanan extends StatelessWidget {
           actions: [
             GestureDetector(
               onTap: () {
-                // Menavigasi ke halaman profil
                 Get.toNamed(Routes.PROFILE);
               },
               child: CircleAvatar(
@@ -149,8 +145,7 @@ class MenuMakanan extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.search, color: Colors.black),
                       onPressed: () {
-                        // Menavigasi ke halaman pencarian
-                        Get.toNamed(Routes.SEARCH); // Ganti dengan rute pencarian yang sesuai
+                        Get.toNamed(Routes.SEARCH);
                       },
                     ),
                   ],
@@ -160,25 +155,21 @@ class MenuMakanan extends StatelessWidget {
             ),
           ),
         ),
-        drawer: DrawerComponent(scaffoldKey: _scaffoldKey), // Memanggil DrawerComponent
+        drawer: DrawerComponent(scaffoldKey: _scaffoldKey),
         body: TabBarView(
           children: [
-            // Konten untuk tab "Makanan"
             buildList(),
-            // Konten untuk tab "Minuman"
             buildDrinkList(),
-            // Konten untuk tab "Lainnya"
             buildOtherList(),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Arahkan ke halaman keranjang
             Get.toNamed(Routes.CART);
           },
-          backgroundColor: Colors.red, // Ubah warna background tombol
-          child: Icon(Icons.shopping_cart, color: Colors.white), // Ikon keranjang
+          backgroundColor: Colors.red,
+          child: Icon(Icons.shopping_cart, color: Colors.white),
         ),
       ),
 
@@ -204,9 +195,6 @@ class MenuMakanan extends StatelessWidget {
     );
   }
 
-
-
-  // Widget untuk list Minuman
   Widget buildDrinkList() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -226,7 +214,6 @@ class MenuMakanan extends StatelessWidget {
     );
   }
 
-  // Widget untuk list Lainnya
   Widget buildOtherList() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -246,7 +233,6 @@ class MenuMakanan extends StatelessWidget {
     );
   }
 
-  // Food Item Widget
   Widget foodItem(Map<String, String> item) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),

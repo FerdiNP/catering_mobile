@@ -21,7 +21,6 @@ class FormAlamat extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Nama Alamat
             Text(
               'Nama Alamat',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -45,7 +44,6 @@ class FormAlamat extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Nama Penerima
             Text(
               'Nama Penerima',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -69,7 +67,6 @@ class FormAlamat extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            // Alamat
             Text(
               'Alamat',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -93,13 +90,11 @@ class FormAlamat extends StatelessWidget {
             ),
             SizedBox(height: 32),
 
-            // Action Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Handle add action
                     Get.back();
                   },
                   child: Text(
@@ -116,7 +111,6 @@ class FormAlamat extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle update action
                     Get.back();
                   },
                   child: Text(

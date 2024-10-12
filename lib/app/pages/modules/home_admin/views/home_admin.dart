@@ -13,7 +13,7 @@ class HomeAdmin extends StatelessWidget {
         title: Text('Home Admin'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout), // Icon untuk tombol logout
+            icon: Icon(Icons.logout),
             onPressed: () {
               Get.offNamed(Routes.MAINLOGIN);
             },

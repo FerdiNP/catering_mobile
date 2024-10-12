@@ -18,7 +18,7 @@ class HomeKurir extends StatelessWidget {
         title: Text('Home Kurir'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout), // Icon untuk tombol logout
+            icon: Icon(Icons.logout),
             onPressed: () {
               Get.offNamed(Routes.KURIRLOGIN);
             },
@@ -83,9 +83,10 @@ class HomeKurir extends StatelessWidget {
             Divider(),
             ListTile(
               leading: Icon(Icons.local_shipping, color: Colors.black, size: 30),
-              title: Text('Status Pesanan'),
+              title: Text('Status Pengiriman'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
+                Get.toNamed(Routes.STATUSPENGIRIMAN);
               },
             ),
             Divider(),

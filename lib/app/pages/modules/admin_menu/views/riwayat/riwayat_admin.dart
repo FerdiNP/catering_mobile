@@ -7,7 +7,6 @@ class RiwayatAdmin extends StatefulWidget {
 }
 
 class _RiwayatAdminState extends State<RiwayatAdmin> {
-  // Dummy data transaksi
   final List<Map<String, String>> transactions = [
     {
       'transactionNo': '001',
@@ -34,7 +33,7 @@ class _RiwayatAdminState extends State<RiwayatAdmin> {
   @override
   void initState() {
     super.initState();
-    filteredTransactions = transactions; // Awalnya, tampilkan semua transaksi
+    filteredTransactions = transactions;
   }
 
   void filterTransactions(String query) {
@@ -58,7 +57,6 @@ class _RiwayatAdminState extends State<RiwayatAdmin> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search bar untuk mencari nomor transaksi
             TextField(
               decoration: InputDecoration(
                 labelText: 'Cari Nomor Transaksi',
@@ -104,7 +102,6 @@ class _RiwayatAdminState extends State<RiwayatAdmin> {
                       ),
                       trailing: Icon(Icons.arrow_forward_ios, size: 16),
                       onTap: () {
-                        // Logika untuk melihat detail transaksi
                         print('Lihat detail transaksi');
                       },
                     ),

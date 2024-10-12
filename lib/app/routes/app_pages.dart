@@ -1,10 +1,13 @@
 
+import 'package:catering_mobile/app/pages/modules/alamat/views/alamat_pengiriman.dart';
 import 'package:catering_mobile/app/pages/modules/cart/view/cart.dart';
+import 'package:catering_mobile/app/pages/modules/chat/views/chat.dart';
 import 'package:catering_mobile/app/pages/modules/home_admin/views/home_admin.dart';
 import 'package:catering_mobile/app/pages/modules/home_kurir/views/home_kurir.dart';
 import 'package:catering_mobile/app/pages/modules/menu_makanan/menu_makanan.dart';
 import 'package:catering_mobile/app/pages/modules/paket_makanan/paket_makanan.dart';
 import 'package:catering_mobile/app/pages/modules/search/views/search.dart';
+import 'package:catering_mobile/app/pages/modules/status/views/status_pesanan.dart';
 import 'package:catering_mobile/app/pages/modules/user_menu/alamat/form_alamat.dart';
 import 'package:catering_mobile/app/pages/modules/user_menu/alamat/manage_alamat.dart';
 import 'package:catering_mobile/app/pages/modules/user_profile/views/user_profile.dart';
@@ -19,6 +22,8 @@ import '../pages/modules/admin_menu/views/user/manage_user.dart';
 import '../pages/modules/admin_menu/views/voucher/form_voucher.dart';
 import '../pages/modules/admin_menu/views/voucher/manage_voucher.dart';
 import '../pages/modules/favorit/views/favorite.dart';
+import '../pages/modules/kurir_menu/views/pesanan/konfirmasi_pengiriman.dart';
+import '../pages/modules/kurir_menu/views/pesanan/status_pengiriman.dart';
 import '../pages/modules/kurir_menu/views/riwayat/riwayat_kurir.dart';
 import '../pages/modules/login/views/kurir_login.dart';
 import '../pages/modules/login/views/main_login.dart';
@@ -28,11 +33,13 @@ import '../pages/modules/home/bindings/home_binding.dart';
 import '../pages/modules/home/views/home_view.dart';
 import '../pages/modules/payment/views/pembayaran.dart';
 import '../pages/modules/register/views/register.dart';
+import '../pages/modules/tracking/views/lacak_pesanan.dart';
 import '../pages/modules/user_menu/keluhan/keluhan.dart';
 import '../pages/modules/user_menu/lapor_bug/lapor_bug.dart';
 import '../pages/modules/user_menu/metode_pembayaran/metode_pembayaran.dart';
 import '../pages/modules/user_menu/password/update_password.dart';
 import '../pages/modules/user_menu/riwayat/riwayat_transaksi.dart';
+import '../pages/modules/voucher/views/voucher.dart';
 
 part 'app_routes.dart';
 
@@ -86,7 +93,10 @@ class AppPages {
       name: _Paths.CART,
       page: () => CartView(),
     ),
-
+    GetPage(
+      name: _Paths.VOUCHER,
+      page: () => Voucher(),
+    ),
     GetPage(
       name: _Paths.MANAGEUSER,
       page: () => ManageUser(),
@@ -127,10 +137,14 @@ class AppPages {
       name: _Paths.RIWAYATKURIR,
       page: () => RiwayatKurir(),
     ),
-    // GetPage(
-    //   name: _Paths.STATUSKURIR,
-    //   page: () => StatusKurir(),
-    // ),
+    GetPage(
+      name: _Paths.STATUSPENGIRIMAN,
+      page: () => StatusPengiriman(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => ChatScreen(),
+    ),
     GetPage(
       name: _Paths.UPDATEPASSWORD,
       page: () => UpdatePassword(),
@@ -158,6 +172,18 @@ class AppPages {
     GetPage(
       name: _Paths.PEMBAYARAN,
       page: () => Pembayaran(),
+    ),
+    GetPage(
+      name: _Paths.LACAKPESANAN,
+      page: () => LacakPesanan(),
+    ),
+    GetPage(
+      name: _Paths.STATUSPESANAN,
+      page: () => StatusPesanan(),
+    ),
+    GetPage(
+      name: _Paths.ALAMATPENGIRIMAN,
+      page: () => AlamatPengiriman(),
     ),
     GetPage(
       name: _Paths.FORMALAMAT,

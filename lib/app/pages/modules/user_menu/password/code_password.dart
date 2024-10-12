@@ -1,4 +1,3 @@
-// ForgotPass2 - Masukkan Kode Verifikasi
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +10,7 @@ class CodePassword extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Get.back(); // Navigasi kembali ke ForgotPass1
+            Get.back();
           },
         ),
         title: const Text('Forgot Password'),
@@ -51,10 +50,10 @@ class CodePassword extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Get.to(() => ForgotPass3View()); // Navigasi ke ForgotPass3
+                  // Get.to(() => ForgotPass3View());
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red, // Warna tombol
+                  backgroundColor: Colors.red,
                   padding:
                   const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),

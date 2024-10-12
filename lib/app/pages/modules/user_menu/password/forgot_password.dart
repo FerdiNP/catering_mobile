@@ -11,7 +11,7 @@ class ForgotPass1View extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Get.back(); // Navigasi kembali ke halaman sebelumnya
+            Get.back();
           },
         ),
         title: const Text('Forgot Password'),
@@ -37,10 +37,10 @@ class ForgotPass1View extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // Get.to(() => ForgotPass2View()); // Navigasi ke ForgotPass2
+                  // Get.to(() => ForgotPass2View());
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red, // Warna tombol
+                  backgroundColor: Colors.red,
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text('Kirim'),

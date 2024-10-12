@@ -15,7 +15,7 @@ class Keluhan extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Get.back(); // Menggunakan Get.back() untuk navigasi kembali
+            Get.back();
           },
         ),
       ),
@@ -24,7 +24,6 @@ class Keluhan extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Nomor Pesanan
             Text(
               'Nomor Pesanan',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -48,7 +47,6 @@ class Keluhan extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Isi Keluhan
             Text(
               'Isi Keluhan',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -73,7 +71,6 @@ class Keluhan extends StatelessWidget {
             ),
             SizedBox(height: 32),
 
-            // Kirim Button
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -81,7 +78,7 @@ class Keluhan extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  backgroundColor: Color(0xFFFF3131), // Warna tombol
+                  backgroundColor: Color(0xFFFF3131),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

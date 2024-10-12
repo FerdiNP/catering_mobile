@@ -1,85 +1,151 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class PaymentController extends GetxController {
+  var connectedMethods = [
+    {
+      'type': 'Kartu Kredit',
+      'details': 'Nama Bank: Bank ABC\nNo. Kartu: **** **** **** 1234\nSaldo: Rp 500.000',
+      'icon': Icons.credit_card,
+    },
+    {
+      'type': 'Bank Transfer',
+      'details': 'Nama Bank: Bank XYZ\nNo. Rekening: 1234567890\nSaldo: Rp 1.200.000',
+      'icon': Icons.account_balance,
+    },
+    {
+      'type': 'E-Wallet',
+      'details': 'Nama E-Wallet: E-Wallet XYZ\nSaldo: Rp 300.000',
+      'icon': Icons.account_balance_wallet,
+    },
+  ].obs;
+}
 
 class MetodePembayaran extends StatelessWidget {
+  final PaymentController controller = Get.put(PaymentController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFECD7D7),
       appBar: AppBar(
-        title: Text('Tambah Metode Pembayaran'),
-        backgroundColor: Color(0xFFFF3131),
+        scrolledUnderElevation: 0,
+        title: Text('Metode Pembayaran'),
+        backgroundColor: Color(0xFFECD7D7),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            Text(
-              'Nama Metode Pembayaran',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(color: Color(0xFFB4A5A5), width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(color: Color(0xFF23A1F2), width: 2.5),
-                ),
-                hintText: 'Masukkan Nama Metode Pembayaran',
-                hintStyle: TextStyle(color: Colors.grey),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Metode Pembayaran Terhubung',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
               ),
             ),
-            SizedBox(height: 20),
-            Text(
-              'Deskripsi',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            SizedBox(height: 8),
-            TextField(
-              maxLines: 3, // Mengizinkan beberapa baris
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(color: Color(0xFFB4A5A5), width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                  borderSide: BorderSide(color: Color(0xFF23A1F2), width: 2.5),
-                ),
-                hintText: 'Masukkan Deskripsi Metode Pembayaran',
-                hintStyle: TextStyle(color: Colors.grey),
-              ),
-            ),
-            SizedBox(height: 32),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Logika untuk menyimpan metode pembayaran
+          ),
+          Expanded(
+            child: Obx(() {
+              return ListView.builder(
+                itemCount: controller.connectedMethods.length,
+                itemBuilder: (context, index) {
+                  final method = controller.connectedMethods[index];
+                  return Card(
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: ListTile(
+                      leading: Icon(method['icon'] as IconData),
+                      title: Text(method['type'] as String),
+                      subtitle: Text(method['details'] as String),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          _showDeleteConfirmationDialog(context, index);
+                        },
+                      ),
+                    ),
+                  );
                 },
-                child: Text(
-                  'Simpan',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-                  backgroundColor: Color(0xFFFF3131),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+              );
+            }),
+          ),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Tambah Metode Pembayaran',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              children: [
+                Card(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: Icon(Icons.credit_card),
+                    title: Text('Kartu Kredit/Debit'),
+                    onTap: () {
+                    },
                   ),
                 ),
-              ),
+                Card(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: Icon(Icons.account_balance),
+                    title: Text('Bank'),
+                    onTap: () {
+                    },
+                  ),
+                ),
+                Card(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    leading: Icon(Icons.account_balance_wallet),
+                    title: Text('E-Wallet'),
+                    onTap: () {
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteConfirmationDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Konfirmasi Hapus'),
+          content: Text('Apakah Anda yakin ingin menghapus metode pembayaran ini?'),
+          actions: [
+            TextButton(
+              child: Text('Batal'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Hapus'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Metode pembayaran telah dihapus')),
+                );
+              },
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 }

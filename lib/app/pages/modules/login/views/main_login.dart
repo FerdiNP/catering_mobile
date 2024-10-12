@@ -33,7 +33,6 @@ class MainLogin extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            // Judul
             Center(
               child: Text(
                 'Selamat Datang',
@@ -114,7 +113,6 @@ class MainLogin extends StatelessWidget {
               ),
             ),
             SizedBox(height: 32),
-            // Bagian Belum Punya Akun dan Login Kurir
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -125,15 +123,15 @@ class MainLogin extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(width: 4), // Mengurangi jarak antara teks dan tombol
+                SizedBox(width: 4),
                 TextButton(
                   onPressed: () {
                     Get.offNamed(Routes.REGISTER);
                   },
                   style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero, // Hilangkan padding bawaan
-                    minimumSize: Size(0, 0), // Atur ukuran minimum agar tidak ada padding
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Agar ukuran tombol mengikuti konten
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size(0, 0),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   child: Text(
                     'Daftar!',
@@ -157,16 +155,15 @@ class MainLogin extends StatelessWidget {
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(width: 4), // Mengurangi jarak antara teks dan tombol
+                SizedBox(width: 4),
                 TextButton(
                   onPressed: () {
-                    // Arahkan ke halaman login kurir
                     Get.offNamed(Routes.KURIRLOGIN);
                   },
                   style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero, // Hilangkan padding bawaan
-                    minimumSize: Size(0, 0), // Atur ukuran minimum agar tidak ada padding
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Agar ukuran tombol mengikuti konten
+                    padding: EdgeInsets.zero,
+                    minimumSize: Size(0, 0),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   child: Text(
                     'Kurir',

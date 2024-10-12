@@ -9,7 +9,6 @@ class ManageVoucher extends StatelessWidget {
   final _unselectedBackgroundColor = Color(0xFFECD7D7);
   final _borderColor = Color(0xFFCDE7BE);
 
-  // Dummy data voucher
   final List<Map<String, String>> vouchers = [
     {'code': 'DISC10', 'discount': '10%'},
     {'code': 'DISC20', 'discount': '20%'},
@@ -27,7 +26,7 @@ class ManageVoucher extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Get.toNamed(Routes.FORMVOUCHER); // Arahkan ke halaman tambah voucher
+              Get.toNamed(Routes.FORMVOUCHER);
             },
           ),
         ],
@@ -39,21 +38,20 @@ class ManageVoucher extends StatelessWidget {
           return Card(
             margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: ListTile(
-              title: Text(voucher['code']!), // Menampilkan kode voucher
-              subtitle: Text('Diskon: ${voucher['discount']}'), // Menampilkan diskon
+              title: Text(voucher['code']!),
+              subtitle: Text('Diskon: ${voucher['discount']}'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () {
-                      Get.toNamed(Routes.FORMVOUCHER); // Arahkan ke halaman edit voucher
+                      Get.toNamed(Routes.FORMVOUCHER);
                     },
                   ),
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      // Tampilkan dialog konfirmasi untuk penghapusan
                       _showDeleteConfirmationDialog(context, index);
                     },
                   ),
@@ -66,7 +64,6 @@ class ManageVoucher extends StatelessWidget {
     );
   }
 
-  // Metode untuk menampilkan dialog konfirmasi
   void _showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
@@ -78,13 +75,13 @@ class ManageVoucher extends StatelessWidget {
             TextButton(
               child: Text('Batal'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
             TextButton(
               child: Text('Hapus'),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Voucher telah dihapus')),
                 );
