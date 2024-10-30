@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593903823276",
+    "project_id": "catering-23ce0",
+    "storage_bucket": "catering-23ce0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593903823276:android:afba3901fe639ba925f209",
+        "android_client_info": {
+          "package_name": "com.example.catering_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEwxnWOlkOTfZpqOgBm3HfCfr-4O--5qM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
