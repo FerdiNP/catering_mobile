@@ -1,45 +1,47 @@
-
-import 'package:catering_mobile/app/pages/modules/alamat/views/alamat_pengiriman.dart';
-import 'package:catering_mobile/app/pages/modules/cart/view/cart.dart';
+import 'package:catering_mobile/app/components/menu_detail.dart';
+import 'package:catering_mobile/app/components/paket_detail.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/menu/form_menu.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/menu/manage_menu.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/paket/form_paket.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/paket/manage_paket.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/riwayat/riwayat_admin.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/user/form_user.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/user/manage_user.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/voucher/form_voucher.dart';
+import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/voucher/manage_voucher.dart';
+import 'package:catering_mobile/app/pages/modules/admin/home_admin/views/home_admin.dart';
 import 'package:catering_mobile/app/pages/modules/chat/views/chat.dart';
-import 'package:catering_mobile/app/pages/modules/home_admin/views/home_admin.dart';
-import 'package:catering_mobile/app/pages/modules/home_kurir/views/home_kurir.dart';
-import 'package:catering_mobile/app/pages/modules/menu_makanan/menu_makanan.dart';
-import 'package:catering_mobile/app/pages/modules/paket_makanan/paket_makanan.dart';
-import 'package:catering_mobile/app/pages/modules/search/views/search.dart';
-import 'package:catering_mobile/app/pages/modules/status/views/status_pesanan.dart';
-import 'package:catering_mobile/app/pages/modules/user_menu/alamat/form_alamat.dart';
-import 'package:catering_mobile/app/pages/modules/user_menu/alamat/manage_alamat.dart';
-import 'package:catering_mobile/app/pages/modules/user_profile/views/user_profile.dart';
-
-import '../pages/modules/admin_menu/views/menu/form_menu.dart';
-import '../pages/modules/admin_menu/views/menu/manage_menu.dart';
-import '../pages/modules/admin_menu/views/paket/form_paket.dart';
-import '../pages/modules/admin_menu/views/paket/manage_paket.dart';
-import '../pages/modules/admin_menu/views/riwayat/riwayat_admin.dart';
-import '../pages/modules/admin_menu/views/user/form_user.dart';
-import '../pages/modules/admin_menu/views/user/manage_user.dart';
-import '../pages/modules/admin_menu/views/voucher/form_voucher.dart';
-import '../pages/modules/admin_menu/views/voucher/manage_voucher.dart';
-import '../pages/modules/favorit/views/favorite.dart';
-import '../pages/modules/kurir_menu/views/pesanan/konfirmasi_pengiriman.dart';
-import '../pages/modules/kurir_menu/views/pesanan/status_pengiriman.dart';
-import '../pages/modules/kurir_menu/views/riwayat/riwayat_kurir.dart';
-import '../pages/modules/login/views/kurir_login.dart';
-import '../pages/modules/login/views/main_login.dart';
+import 'package:catering_mobile/app/pages/modules/kurir/home_kurir/views/home_kurir.dart';
+import 'package:catering_mobile/app/pages/modules/kurir/kurir_menu/views/pesanan/status_pengiriman.dart';
+import 'package:catering_mobile/app/pages/modules/kurir/kurir_menu/views/riwayat/riwayat_kurir.dart';
+import 'package:catering_mobile/app/pages/modules/login/views/kurir_login.dart';
+import 'package:catering_mobile/app/pages/modules/login/views/main_login.dart';
+import 'package:catering_mobile/app/pages/modules/register/views/register.dart';
+import 'package:catering_mobile/app/pages/modules/tracking/views/lacak_pesanan.dart';
+import 'package:catering_mobile/app/pages/modules/user/alamat/views/alamat_pengiriman.dart';
+import 'package:catering_mobile/app/pages/modules/user/cart/view/cart.dart';
+import 'package:catering_mobile/app/pages/modules/user/favorit/views/favorite.dart';
+import 'package:catering_mobile/app/pages/modules/user/home/bindings/home_binding.dart';
+import 'package:catering_mobile/app/pages/modules/user/home/views/home_view.dart';
+import 'package:catering_mobile/app/pages/modules/user/menu_makanan/bindings/menu_makanan_bindings.dart';
+import 'package:catering_mobile/app/pages/modules/user/menu_makanan/views/menu_makanan.dart';
+import 'package:catering_mobile/app/pages/modules/user/paket_makanan/bindings/paket_makanan_binding.dart';
+import 'package:catering_mobile/app/pages/modules/user/paket_makanan/views/paket_makanan.dart';
+import 'package:catering_mobile/app/pages/modules/user/payment/views/pembayaran.dart';
+import 'package:catering_mobile/app/pages/modules/user/search/views/search.dart';
+import 'package:catering_mobile/app/pages/modules/user/status/views/status_pesanan.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/alamat/form_alamat.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/alamat/manage_alamat.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/keluhan/keluhan.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/lapor_bug/lapor_bug.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/metode_pembayaran/metode_pembayaran.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/password/update_password.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_menu/riwayat/riwayat_transaksi.dart';
+import 'package:catering_mobile/app/pages/modules/user/user_profile/views/user_profile.dart';
+import 'package:catering_mobile/app/pages/modules/user/voucher/views/voucher.dart';
 import 'package:get/get.dart';
 
-import '../pages/modules/home/bindings/home_binding.dart';
-import '../pages/modules/home/views/home_view.dart';
-import '../pages/modules/payment/views/pembayaran.dart';
-import '../pages/modules/register/views/register.dart';
-import '../pages/modules/tracking/views/lacak_pesanan.dart';
-import '../pages/modules/user_menu/keluhan/keluhan.dart';
-import '../pages/modules/user_menu/lapor_bug/lapor_bug.dart';
-import '../pages/modules/user_menu/metode_pembayaran/metode_pembayaran.dart';
-import '../pages/modules/user_menu/password/update_password.dart';
-import '../pages/modules/user_menu/riwayat/riwayat_transaksi.dart';
-import '../pages/modules/voucher/views/voucher.dart';
+
 
 part 'app_routes.dart';
 
@@ -76,6 +78,11 @@ class AppPages {
     GetPage(
       name: _Paths.MENU,
       page: () => MenuMakanan(),
+      binding: MenuMakananBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_MENU,
+      page: () => DetailMenuPage(),
     ),
     GetPage(
       name: _Paths.SEARCH,
@@ -84,6 +91,11 @@ class AppPages {
     GetPage(
       name: _Paths.PAKET,
       page: () => PaketMakanan(),
+      binding: PaketMakananBinding(),
+    ),
+    GetPage(
+      name: Routes.DETAIL_PAKET,
+      page: () => DetailPaketPage(),
     ),
     GetPage(
       name: _Paths.FAVORITE,

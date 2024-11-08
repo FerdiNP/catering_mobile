@@ -7,7 +7,9 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const FAVORITE = _Paths.FAVORITE;
   static const PAKET = _Paths.PAKET;
+  static const DETAIL_PAKET = _Paths.DETAIL_PAKET;
   static const MENU = _Paths.MENU;
+  static const DETAIL_MENU = _Paths.DETAIL_MENU;
   static const SEARCH = _Paths.SEARCH;
   static const CART = _Paths.CART;
   static const VOUCHER = _Paths.VOUCHER;
@@ -48,7 +50,9 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const FAVORITE = '/favorite';
   static const MENU = '/menu-makanan';
+  static const DETAIL_MENU = '/detail-menu';
   static const PAKET = '/paket-makanan';
+  static const DETAIL_PAKET = '/detail-paket';
   static const SEARCH = '/search';
   static const CART = '/cart';
   static const VOUCHER = '/voucher';
