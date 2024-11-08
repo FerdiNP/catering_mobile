@@ -46,7 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '593903823276',
     projectId: 'catering-23ce0',
     authDomain: 'catering-23ce0.firebaseapp.com',
-    storageBucket: 'catering-23ce0.firebasestorage.app',
+    storageBucket: 'catering-23ce0.appspot.com',
     measurementId: 'G-BK5KG3HJ6N',
   );
 
@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
     appId: '1:593903823276:android:afba3901fe639ba925f209',
     messagingSenderId: '593903823276',
     projectId: 'catering-23ce0',
-    storageBucket: 'catering-23ce0.firebasestorage.app',
+    storageBucket: 'catering-23ce0.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:593903823276:ios:b873512d83b31c5325f209',
     messagingSenderId: '593903823276',
     projectId: 'catering-23ce0',
-    storageBucket: 'catering-23ce0.firebasestorage.app',
+    storageBucket: 'catering-23ce0.appspot.com',
     iosBundleId: 'com.example.cateringMobile',
   );
 
@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
     appId: '1:593903823276:ios:b873512d83b31c5325f209',
     messagingSenderId: '593903823276',
     projectId: 'catering-23ce0',
-    storageBucket: 'catering-23ce0.firebasestorage.app',
+    storageBucket: 'catering-23ce0.appspot.com',
     iosBundleId: 'com.example.cateringMobile',
   );
 
@@ -82,7 +82,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '593903823276',
     projectId: 'catering-23ce0',
     authDomain: 'catering-23ce0.firebaseapp.com',
-    storageBucket: 'catering-23ce0.firebasestorage.app',
+    storageBucket: 'catering-23ce0.appspot.com',
     measurementId: 'G-HJQ4PS5MMG',
   );
+
 }

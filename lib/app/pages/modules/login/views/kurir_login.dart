@@ -1,9 +1,28 @@
+import 'package:catering_mobile/app/controllers/auth_controller.dart';
 import 'package:catering_mobile/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class KurirLogin extends StatelessWidget {
+class KurirLogin extends StatefulWidget {
+  @override
+  State<KurirLogin> createState() => _MainLoginPageState();
+}
+
+class _MainLoginPageState extends State<KurirLogin> {
+  final AuthController _authController = Get.put(AuthController());
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool _showPasswordInput = false; // State variable to toggle input screen
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +67,13 @@ class KurirLogin extends StatelessWidget {
             ),
             SizedBox(height: 30),
             Text(
-              'Username',
+              'Email',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 8),
             TextField(
+              controller: _emailController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Color(0xFFF2E3E3),
@@ -65,7 +85,7 @@ class KurirLogin extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(color: Color(0xFF23A1F2), width: 2.5),
                 ),
-                hintText: 'Masukkan Username',
+                hintText: 'Masukkan Email',
                 hintStyle: TextStyle(color: Colors.grey),
               ),
             ),
@@ -76,6 +96,7 @@ class KurirLogin extends StatelessWidget {
             ),
             SizedBox(height: 8),
             TextField(
+              controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 filled: true,
@@ -95,25 +116,32 @@ class KurirLogin extends StatelessWidget {
             ),
             SizedBox(height: 30),
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.offNamed(Routes.HOMEKURIR);
-                },
-                child: Text(
-                  'Masuk',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 80),
-                  backgroundColor: Color(0xFFFF3131),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              child:
+              Obx(() {
+                return ElevatedButton(
+                  onPressed: _authController.isLoading.value
+                      ? null
+                      : () {
+                    _authController.loginKurir(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  },
+                  child: _authController.isLoading.value
+                      ? CircularProgressIndicator()
+                      : Text('Masuk', style: TextStyle(color: Colors.white, fontSize: 18),),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 80),
+                    backgroundColor: Color(0xFFFF3131),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-              ),
+                );
+              }),
             ),
             SizedBox(height: 32),
-              Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
