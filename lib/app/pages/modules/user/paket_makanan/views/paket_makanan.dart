@@ -196,16 +196,52 @@ class PaketMakanan extends GetView<PaketMakananController> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
         onTap: () async {
-          String paketId = item['idPaket'] as String;
-          if (paketId == null) {
-            print("Field idPaket tidak ditemukan pada item ini: $item");
+          if (!item.containsKey('idPaket') || item['idPaket'] == null || item['idPaket'].toString().isEmpty) {
+            Get.snackbar(
+              'Error',
+              'Detail paket tidak tersedia. Please Wait',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(10),
+              borderRadius: 10,
+              icon: Icon(
+                Icons.error_outline,
+                color: Colors.white,
+              ),
+            );
+            print("error");
+            Get.offAllNamed(Routes.MENU);
+            Get.offAllNamed(Routes.PAKET);
+            return;
           }
+
+          String paketId = item['idPaket'];
 
           try {
             var paketDetail = await FirebaseFirestore.instance
                 .collection('packages')
                 .doc(paketId)
                 .get();
+
+            if (!paketDetail.exists) {
+              Get.snackbar(
+                'Error',
+                'Data paket tidak ditemukan',
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                duration: Duration(seconds: 2),
+                margin: EdgeInsets.all(10),
+                borderRadius: 10,
+                icon: Icon(
+                  Icons.error_outline,
+                  color: Colors.white,
+                ),
+              );
+              return;
+            }
 
             var dataPaket = paketDetail.data() ?? {};
 
@@ -220,6 +256,20 @@ class PaketMakanan extends GetView<PaketMakananController> {
               },
             );
           } catch (e) {
+            Get.snackbar(
+              'Error',
+              'Terjadi kesalahan saat mengambil data',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(10),
+              borderRadius: 10,
+              icon: Icon(
+                Icons.error_outline,
+                color: Colors.white,
+              ),
+            );
             print("Error saat mengambil data: $e");
           }
         },
@@ -233,8 +283,11 @@ class PaketMakanan extends GetView<PaketMakananController> {
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover)
-                  : Image.network(gambarPaket,
-                  width: 100, height: 100, fit: BoxFit.cover),
+                  : Image.network(
+                  gambarPaket,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover),
             ),
             SizedBox(width: 15),
             Expanded(
@@ -245,9 +298,7 @@ class PaketMakanan extends GetView<PaketMakananController> {
                     namaPaket,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  SizedBox(height: 5),
                   Text(
                     deskripsiPaket,
                     style: TextStyle(color: Colors.grey[600], fontSize: 14),
@@ -269,15 +320,13 @@ class PaketMakanan extends GetView<PaketMakananController> {
                       SizedBox(width: 5),
                       Text(
                         waktu,
-                        style:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: 10),
                       Icon(Icons.attach_money, size: 16, color: Colors.green),
                       Text(
                         item['hargaPaket'].toString(),
-                        style:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

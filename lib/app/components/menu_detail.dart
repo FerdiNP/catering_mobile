@@ -132,6 +132,12 @@ class _DetailMenuPageState extends State<DetailMenuPage> {
       appBar: AppBar(
         title: Text(namaMenu, style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: _mainColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.of(context).pop(); // Alternatif untuk Get.back()
+          },
+        ),
         actions: [
           // Tombol favorit di sebelah kanan
           Obx(() => IconButton(
