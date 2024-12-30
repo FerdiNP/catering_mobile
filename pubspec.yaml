@@ -46,6 +46,16 @@ dependencies:
   firebase_storage:
   provider:
   intl:
+  flutter_cart:
+  get_storage:
+  speech_to_text:
+  permission_handler:
+  geolocator:
+  geocoding:
+  google_maps_flutter:
+  url_launcher:
+  http:
+  connectivity_plus:
 
 dev_dependencies:
   flutter_test:

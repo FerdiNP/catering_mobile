@@ -279,11 +279,28 @@ class HomeView extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
         onTap: () async {
-          String menuId = item['idMenu'] as String;
-          if (menuId == null) {
-            print("Field idMenu tidak ditemukan pada item ini: $item");
-            return; // Menghentikan fungsi jika idMenu tidak ada
+          if (!item.containsKey('idMenu') || item['idMenu'] == null || item['idPaket'].toString().isEmpty) {
+            Get.snackbar(
+              'Error',
+              'Detail menu tidak tersedia. Please Wait',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.red,
+              colorText: Colors.white,
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(10),
+              borderRadius: 10,
+              icon: Icon(
+                Icons.error_outline,
+                color: Colors.white,
+              ),
+            );
+            print("error");
+            Get.offAllNamed(Routes.MENU);
+            Get.offAllNamed(Routes.HOME);
+            return;
           }
+
+          String menuId = item['idMenu'] as String;
           try {
             var menuDetail = await FirebaseFirestore.instance
                 .collection('menus')

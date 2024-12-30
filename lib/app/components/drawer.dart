@@ -60,7 +60,7 @@ class DrawerComponent extends StatelessWidget {
                     if (!isActive) {
                       scaffoldKey.currentState?.openEndDrawer();
                       Navigator.of(context).pop();
-                      Get.offNamed(menuRoutes[index]);
+                      Navigator.pushReplacementNamed(context, menuRoutes[index]);
                     } else {
                       scaffoldKey.currentState?.openEndDrawer();
                       Navigator.of(context).pop();

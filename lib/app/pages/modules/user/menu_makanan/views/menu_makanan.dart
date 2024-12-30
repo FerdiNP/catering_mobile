@@ -226,11 +226,12 @@ class MenuMakanan extends GetView<MenuMakananController> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
         onTap: () async {
-          String menuId = item['idMenu'] as String;
-          if (menuId == null) {
+          if (!item.containsKey('idMenu') || item['idMenu'] == null) {
             print("Field idMenu tidak ditemukan pada item ini: $item");
-            return; // Menghentikan fungsi jika idMenu tidak ada
+            return;
           }
+
+          String menuId = item['idMenu'];
 
           try {
             var menuDetail = await FirebaseFirestore.instance
@@ -238,9 +239,15 @@ class MenuMakanan extends GetView<MenuMakananController> {
                 .doc(menuId)
                 .get();
 
+            if (!menuDetail.exists) {
+              print("Document with id $menuId not found in Firestore.");
+              return;
+            }
+
             var dataMenu = menuDetail.data() ?? {};
 
-            // Pastikan data yang dikirim ke halaman detail valid
+            print("Navigating to DETAIL_MENU with arguments: $dataMenu");
+
             Get.toNamed(
               Routes.DETAIL_MENU,
               arguments: {
@@ -248,13 +255,14 @@ class MenuMakanan extends GetView<MenuMakananController> {
                 'deskripsiMenu': dataMenu['deskripsiMenu'] ?? 'No Description',
                 'gambarMenu': dataMenu['gambarMenu'] ?? '',
                 'hargaMenu': dataMenu['hargaMenu'] ?? 0,
-                'menuId': menuId
+                'menuId': menuId,
               },
             );
           } catch (e) {
             print("Error saat mengambil data: $e");
           }
-        },
+        }
+,
         child: Row(
           children: [
             ClipRRect(
