@@ -39,6 +39,12 @@ class AuthController extends GetxController {
     }
   }
 
+  String getCurrentUserId() {
+    final user = FirebaseAuth.instance.currentUser;
+    return user?.uid ?? '';  // Return an empty string if null, or you can handle this case differently
+  }
+
+
   Future<bool> registerUser(String email, String password, String username, String name, String role) async {
     try {
       isLoading.value = true;

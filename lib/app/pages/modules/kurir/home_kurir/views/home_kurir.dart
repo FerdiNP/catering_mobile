@@ -93,19 +93,28 @@ class HomeKurir extends StatelessWidget {
               },
             ),
             Divider(),
-            TextButton(
-              onPressed: () {
-                Get.offNamed(Routes.HOMEADMIN);
+            ListTile(
+              leading: Icon(Icons.chat, color: Colors.black, size: 30),
+              title: Text('Chat'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                Get.toNamed(Routes.CHATLIST);
               },
-              child: const Text(
-                'Home Admin!',
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
+            Divider(),
+            // TextButton(
+            //   onPressed: () {
+            //     Get.offNamed(Routes.HOMEADMIN);
+            //   },
+            //   child: const Text(
+            //     'Home Admin!',
+            //     style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

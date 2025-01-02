@@ -3,10 +3,40 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_cart/flutter_cart.dart';
 
 class DetailPaketPage extends StatefulWidget {
   @override
   _DetailPaketPageState createState() => _DetailPaketPageState();
+}
+
+class PaketCartModel {
+  final String paketId;
+  final String namaPaket;
+  final String deskripsiPaket;
+  final String gambarPaket;
+  final int hargaPaket;
+  final int quantity;
+
+  PaketCartModel({
+    required this.paketId,
+    required this.namaPaket,
+    required this.deskripsiPaket,
+    required this.gambarPaket,
+    required this.hargaPaket,
+    required this.quantity,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'menuId': paketId,
+      'namaMenu': namaPaket,
+      'deskripsiMenu': deskripsiPaket,
+      'gambarMenu': gambarPaket,
+      'hargaMenu': hargaPaket,
+      'quantity': quantity,
+    };
+  }
 }
 
 class _DetailPaketPageState extends State<DetailPaketPage> {
@@ -14,6 +44,7 @@ class _DetailPaketPageState extends State<DetailPaketPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var paketData = Get.arguments;
+  var cart = FlutterCart();
 
   String paketId = '';
   String namaPaket = 'Untitled';
@@ -47,6 +78,58 @@ class _DetailPaketPageState extends State<DetailPaketPage> {
       userId = user.uid;
     } else {
       print("User belum login");
+    }
+  }
+
+  void addToCart() {
+    try {
+      final variant = ProductVariant(
+        price: hargaPaket.toDouble(),
+        size: null,
+        color: null,
+      );
+
+      cart.addToCart(
+        cartModel: CartModel(
+          productId: paketId,
+          productName: namaPaket,
+          productImages: gambarPaket.isEmpty ? null : [gambarPaket],
+          variants: [variant],
+          quantity: jumlahItem.value,
+          discount: 0.0,
+          productDetails: deskripsiPaket,
+          productMeta: {
+            'menuId': paketId,
+            'namaMenu': namaPaket,
+            'deskripsiMenu': deskripsiPaket,
+            'gambarMenu': gambarPaket,
+            'hargaMenu': hargaPaket,
+          },
+        ),
+      );
+
+      Get.snackbar(
+        "Menu Berhasil Ditambahkan",
+        "Menu $namaPaket berhasil ditambahkan ke keranjang.",
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+        duration: Duration(milliseconds: 1000),
+        margin: EdgeInsets.all(20),
+      );
+
+      Navigator.of(context).pop();
+    } catch (e) {
+      print("Error adding to cart: $e");
+      Get.snackbar(
+        "Error",
+        "Gagal menambahkan paket ke keranjang.",
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        duration: Duration(milliseconds: 1000),
+        margin: EdgeInsets.all(20),
+      );
     }
   }
 
@@ -270,19 +353,7 @@ class _DetailPaketPageState extends State<DetailPaketPage> {
           ),
           child: TextButton(
             onPressed: () {
-              Get.snackbar(
-                "Paket Berhasil Ditambahkan",
-                "Paket ${namaPaket} berhasil ditambahkan ke keranjang.",
-                snackPosition: SnackPosition.TOP,
-                backgroundColor: Colors.green,
-                colorText: Colors.white,
-                duration: Duration(milliseconds: 1000),
-                margin: EdgeInsets.all(20),
-              );
-
-              clear();
-
-              Navigator.of(context).pop(); // Alternatif untuk Get.back()
+              addToCart();
             },
             child: Text(
               'Tambah ke Keranjang',

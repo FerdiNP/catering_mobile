@@ -117,32 +117,41 @@ class HomeAdmin extends StatelessWidget {
               },
             ),
             Divider(),
-            TextButton(
-              onPressed: () {
-                Get.offAllNamed(Routes.HOMEKURIR);
+            ListTile(
+              leading: Icon(Icons.chat, color: Colors.black, size: 30),
+              title: Text('Chat'),
+              trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
+              onTap: () {
+                Get.toNamed(Routes.CHATLIST);
               },
-              child: const Text(
-                'Home Kurir!',
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
-            TextButton(
-              onPressed: () {
-                Get.offAllNamed(Routes.HOME);
-              },
-              child: const Text(
-                'Home User!',
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            Divider(),
+            // TextButton(
+            //   onPressed: () {
+            //     Get.offAllNamed(Routes.HOMEKURIR);
+            //   },
+            //   child: const Text(
+            //     'Home Kurir!',
+            //     style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            // TextButton(
+            //   onPressed: () {
+            //     Get.offAllNamed(Routes.HOME);
+            //   },
+            //   child: const Text(
+            //     'Home User!',
+            //     style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

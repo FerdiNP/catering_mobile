@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cart/cart.dart';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -121,6 +122,9 @@ void main() async {
   // await FirebaseMessagingHandler().initLocalNotification();
   final AuthController _authController = Get.put(AuthController());
   // await tambahBanyakData(daftarData);
+  var cart = FlutterCart();
+  await cart.initializeCart(isPersistenceSupportEnabled: true);
+  Get.put(AuthController());
   runApp(
     GetMaterialApp(
       title: "Catering App",

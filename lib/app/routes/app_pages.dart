@@ -1,5 +1,6 @@
 import 'package:catering_mobile/app/components/menu_detail.dart';
 import 'package:catering_mobile/app/components/paket_detail.dart';
+import 'package:catering_mobile/app/controllers/auth_controller.dart';
 import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/menu/form_menu.dart';
 import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/menu/manage_menu.dart';
 import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/paket/form_paket.dart';
@@ -11,12 +12,14 @@ import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/voucher
 import 'package:catering_mobile/app/pages/modules/admin/admin_menu/views/voucher/manage_voucher.dart';
 import 'package:catering_mobile/app/pages/modules/admin/home_admin/views/home_admin.dart';
 import 'package:catering_mobile/app/pages/modules/chat/views/chat.dart';
+import 'package:catering_mobile/app/pages/modules/chat/views/chat_list.dart';
 import 'package:catering_mobile/app/pages/modules/kurir/home_kurir/views/home_kurir.dart';
 import 'package:catering_mobile/app/pages/modules/kurir/kurir_menu/views/pesanan/status_pengiriman.dart';
 import 'package:catering_mobile/app/pages/modules/kurir/kurir_menu/views/riwayat/riwayat_kurir.dart';
 import 'package:catering_mobile/app/pages/modules/login/views/kurir_login.dart';
 import 'package:catering_mobile/app/pages/modules/login/views/main_login.dart';
 import 'package:catering_mobile/app/pages/modules/register/views/register.dart';
+import 'package:catering_mobile/app/pages/modules/tes/tes.dart';
 import 'package:catering_mobile/app/pages/modules/tracking/views/lacak_pesanan.dart';
 import 'package:catering_mobile/app/pages/modules/user/alamat/views/alamat_pengiriman.dart';
 import 'package:catering_mobile/app/pages/modules/user/cart/view/cart.dart';
@@ -39,6 +42,7 @@ import 'package:catering_mobile/app/pages/modules/user/user_menu/password/update
 import 'package:catering_mobile/app/pages/modules/user/user_menu/riwayat/riwayat_transaksi.dart';
 import 'package:catering_mobile/app/pages/modules/user/user_profile/views/user_profile.dart';
 import 'package:catering_mobile/app/pages/modules/user/voucher/views/voucher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 
@@ -47,6 +51,10 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
+  String? getCurrentUserId() {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user?.uid;
+  }
 
   static const INITIAL = Routes.MAINLOGIN;
 
@@ -154,8 +162,12 @@ class AppPages {
       page: () => StatusPengiriman(),
     ),
     GetPage(
+      name: _Paths.CHATLIST,
+      page: () => ChatListScreen(),
+    ),
+    GetPage(
       name: _Paths.CHAT,
-      page: () => ChatScreen(),
+      page: () => ChatScreenView(otherUserId: '',),
     ),
     GetPage(
       name: _Paths.UPDATEPASSWORD,
@@ -200,6 +212,10 @@ class AppPages {
     GetPage(
       name: _Paths.FORMALAMAT,
       page: () => FormAlamat(),
+    ),
+    GetPage(
+      name: _Paths.TES,
+      page: () => CartPage(),
     ),
     GetPage(
       name: _Paths.HOME,
