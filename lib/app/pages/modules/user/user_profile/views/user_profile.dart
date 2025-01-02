@@ -115,11 +115,11 @@ class UserProfile extends StatelessWidget {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.settings, color: Colors.black, size: 30),
-              title: Text('Pengaturan'),
+              leading: Icon(Icons.chat, color: Colors.black, size: 30),
+              title: Text('Chat'),
               trailing: Icon(Icons.arrow_forward_ios, color: Colors.black),
               onTap: () {
-                // Get.toNamed(Routes.PENGATURANUSER);
+                Get.toNamed(Routes.CHATLIST);
               },
             ),
             Divider(),
@@ -141,32 +141,32 @@ class UserProfile extends StatelessWidget {
               },
             ),
             Divider(),
-            TextButton(
-              onPressed: () {
-                Get.offAllNamed(Routes.HOMEADMIN);
-              },
-              child: const Text(
-                'Home Admin!',
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Get.offAllNamed(Routes.HOMEKURIR);
-              },
-              child: const Text(
-                'Home Kurir!',
-                style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     Get.offAllNamed(Routes.HOMEADMIN);
+            //   },
+            //   child: const Text(
+            //     'Home Admin!',
+            //     style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            // TextButton(
+            //   onPressed: () {
+            //     Get.offAllNamed(Routes.HOMEKURIR);
+            //   },
+            //   child: const Text(
+            //     'Home Kurir!',
+            //     style: TextStyle(
+            //       color: Colors.blueAccent,
+            //       fontSize: 14,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

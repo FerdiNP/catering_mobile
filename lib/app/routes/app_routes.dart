@@ -41,7 +41,8 @@ abstract class Routes {
   static const MAINLOGIN = _Paths.MAINLOGIN;
   static const KURIRLOGIN = _Paths.KURIRLOGIN;
   static const REGISTER = _Paths.REGISTER ;
-
+  static const CHATLIST = _Paths.CHATLIST;
+  static const TES = _Paths.TES;
 }
 
 abstract class _Paths {
@@ -84,4 +85,6 @@ abstract class _Paths {
   static const STATUSPENGIRIMAN = '/status-pengiriman';
   static const CHAT = '/chat';
   static const REGISTER = '/register';
+  static const CHATLIST = '/chat-list';
+  static const TES = '/tes';
 }
